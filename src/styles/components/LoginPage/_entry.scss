@@ -1,0 +1,21 @@
+.tabs-container {
+    width: 100%;
+    margin-top: 50px;
+    background-color: #fff;
+    border: 2px solid $grey;
+    .tabs {
+        padding: 10px;
+        cursor: pointer;
+    }
+    &-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &-body {
+        padding: 30px;
+        border-top: 2px solid $grey;
+        section {
+            width: 100%;
+        }
+    }
+}
