@@ -4,18 +4,18 @@ import {Card, Button, Container, Row, Col} from 'react-bootstrap';
 class Dashboard extends React.Component {
   render() {
     return (
-      <container>
+      <Container>
       <div>
         <Container>
           <Row>
             <Col>
-      <Card className="card1">
+      <Card className="cards">
   <Card.Body>
     <Button className="button" href="#" variant="primary">Add Recipe</Button>
   </Card.Body>
 </Card>
 </Col>
-<Card className="card2">
+<Card className="cards">
   <Card.Body>
     <Button className="button"  href="#" variant="primary">View Recipes</Button>
   </Card.Body>
@@ -25,13 +25,13 @@ class Dashboard extends React.Component {
 </Row>
 <Row>
             <Col>
-      <Card className="card3">
+      <Card className="cards">
   <Card.Body>
     <Button className="button"  href="#" variant="primary">Create Meal Plan</Button>
   </Card.Body>
 </Card>
 </Col>
-<Card className="card4">
+<Card className="cards">
   <Card.Body>
     <Button className="button" href="#" variant="primary">View Meal Plans</Button>
   </Card.Body>
@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
 </Row>
 </Container>
       </div>
-      </container>
+      </Container>
     )
   }
 }
