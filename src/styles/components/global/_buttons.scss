@@ -8,12 +8,17 @@
     -ms-border-radius: 2px;
     -o-border-radius: 2px;
 }
-
 .button-main {
     @extend %button-shared;
     background-color: $darkGrey;
     color: #fff;
     &:hover {
         background-color: $grey;
+    }
+}
+.entry-form-button {
+    width: 100%;
+    @media (min-width: 768px) {
+        width: 175px;
     }
 }
