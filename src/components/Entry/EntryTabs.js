@@ -19,7 +19,7 @@ let EntryTabs = () => {
                             <section style={tabShow === "left" ? { display: "block" } : { display: "none" }}>
                                 <Form className="login-container">
                                     <Form.Group controlId="formBasicEmail">
-                                        <input style={{ width: "100%" }} placeholder="Username" className="input-styled p-2" type="username" name="username" autoFocus/>
+                                        <input style={{ width: "100%" }} placeholder="Username" className="input-styled p-2" type="username" name="username" autoFocus />
                                     </Form.Group>
                                     <Form.Group controlId="formBasicPassword">
                                         <input style={{ width: "100%" }} placeholder="Password" className="input-styled p-2" type="Password" name="password" />
@@ -36,10 +36,10 @@ let EntryTabs = () => {
                                     </Form.Group>
                                     <Form.Row>
                                         <Form.Group as={Col}>
-                                            <input style={{width: "100%"}} placeholder="Create Password" className="input-styled p-2" type="Password" name="password" />
+                                            <input style={{ width: "100%" }} placeholder="Create Password" className="input-styled p-2" type="Password" name="password" />
                                         </Form.Group>
                                         <Form.Group as={Col}>
-                                            <input style={{width: "100%"}} placeholder="Re-type Password" className="input-styled p-2" type="Password" name="password-check" />
+                                            <input style={{ width: "100%" }} placeholder="Re-type Password" className="input-styled p-2" type="Password" name="password-check" />
                                         </Form.Group>
                                     </Form.Row>
                                     <button className="button-main entry-form-button" type="submit">
