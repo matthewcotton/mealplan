@@ -4,7 +4,6 @@ import {Card, Button, Container, Row, Col} from 'react-bootstrap';
 class Dashboard extends React.Component {
   render() {
     return (
-      <Container>
       <div>
         <Container>
           <Row>
@@ -41,7 +40,6 @@ class Dashboard extends React.Component {
 </Row>
 </Container>
       </div>
-      </Container>
     )
   }
 }
