@@ -10,32 +10,32 @@ class Dashboard extends React.Component {
             <Col>
       <Card className="cards">
   <Card.Body>
-    <Button className="button" href="#" variant="primary">Add Recipe</Button>
+    <Button className="button" variant="primary">Add Recipe</Button>
   </Card.Body>
 </Card>
 </Col>
+<Col>
 <Card className="cards">
   <Card.Body>
-    <Button className="button"  href="#" variant="primary">View Recipes</Button>
+    <Button className="button" variant="primary">View Recipes</Button>
   </Card.Body>
 </Card>
-<Col>
 </Col>
 </Row>
 <Row>
             <Col>
       <Card className="cards">
   <Card.Body>
-    <Button className="button"  href="#" variant="primary">Create Meal Plan</Button>
+    <Button className="button" variant="primary">Create Meal Plan</Button>
   </Card.Body>
 </Card>
 </Col>
+<Col>
 <Card className="cards">
   <Card.Body>
-    <Button className="button" href="#" variant="primary">View Meal Plans</Button>
+    <Button className="button" variant="primary">View Meal Plans</Button>
   </Card.Body>
 </Card>
-<Col>
 </Col>
 </Row>
 </Container>
