@@ -2,11 +2,11 @@
 // the entry page lets users create an account and login
 import EntryTabs from '../components/Entry/EntryTabs'
 
-let Entry = () => {
+let Entry = (props) => {
 
     return (
         <>
-            <EntryTabs />
+            <EntryTabs apiClient={props.apiClient}/>
         </>
     )
 }
