@@ -5,7 +5,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="container">
           <Row>
             <Col>
       <Card className="cards">
@@ -45,4 +45,3 @@ class Dashboard extends React.Component {
 }
 
 export default Dashboard
-
