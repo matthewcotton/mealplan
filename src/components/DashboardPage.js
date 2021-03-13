@@ -5,7 +5,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <Container className="container">
+        <Container>
           <Row>
             <Col>
       <Card className="cards">
