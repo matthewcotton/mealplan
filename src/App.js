@@ -27,12 +27,13 @@ function App() {
     isLoggedInHandler(false)
   }
 
-
+  // uncomment line 31 to logout current use
+  // window.localStorage.removeItem("UserToken")
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" render={(props) => <Entry {...props} apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
+          <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
           <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} />
           <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} />
           <ProtectedRoute exact path="/user/recipes" isLoggedIn={isLoggedIn} component={RecipeFeed} />

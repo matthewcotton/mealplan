@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 import { Container, Form, Col } from 'react-bootstrap'
 import LogoGrey from '../../assets/images/logo-grey.png'
+import Loader from '../../assets/images/loading-gif.gif'
 
 let EntryTabs = ({ apiClient, logInFunc }) => {
     let [tabShow, setTabShow] = useState("left")
     let [signUpFormError, setSignUpFormError] = useState("");
     let [logInFormError, setLogInFormError] = useState("")
-    
+    let [buttonDisabled, setButtonDisabled] = useState({ login: false, signup: false })
+
     let handleSignUp = (e) => {
         e.preventDefault();
         // reference for username & both passwords
@@ -16,8 +19,9 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         let passwordCheck = e.target.passwordCheck.value
         // check if both passwords are correct
         if (password !== passwordCheck) {
-            setSignUpFormError("Error! Your passwords don't match.")
+            setSignUpFormError("Your passwords don't match.")
         } else {
+            setButtonDisabled({ signup: true })
             // if both passwords are correct, send data to API and process response status
             apiClient.signUp(username, password)
                 .then(response => {
@@ -28,9 +32,10 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                     e.target.passwordCheck.value = ""
                 })
                 .catch(err => {
-                    alert(err) // needs looking at handling errors better
+                    alert(err) // look at handling errors better - require a response to output message
                     console.error(err)
                 })
+                .finally(() => setButtonDisabled({ signup: false }))
         }
     }
 
@@ -38,6 +43,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         e.preventDefault();
         let username = e.target.username.value;
         let password = e.target.password.value;
+        setButtonDisabled({ login: true })
         apiClient.logIn(username, password)
             .then(response => {
                 logInFunc(response.data.token)
@@ -46,6 +52,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                 alert("Sorry, unable to login.")
                 console.log(err)
             })
+            .finally(() => setButtonDisabled({ login: false }))
     }
 
     return (
@@ -68,15 +75,16 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                                         <input required style={{ width: "100%" }} placeholder="Password" className="input-styled p-2" type="Password" name="password" />
                                     </Form.Group>
                                     <small className="error-message">{logInFormError}</small>
-                                    <button className="button-main entry-form-button" type="submit">
+                                    <button className="button-main entry-form-button" type="submit" disabled={buttonDisabled.login}>
                                         Login
+                                        <img style={buttonDisabled.login ? { display: "inline-block" } : { display: "none" }} height="30px" alt="...loading" src={Loader} />
                                     </button>
                                 </Form>
                             </section>
                             <section style={tabShow === "right" ? { display: "block" } : { display: "none" }}>
                                 <Form onSubmit={(e) => handleSignUp(e)}>
                                     <Form.Group controlId="formBasicEmail">
-                                        <input required style={{ width: "100%" }} placeholder="Create Username" className="input-styled p-2" type="username" name="username" />
+                                        <input required style={{ width: "100%" }} placeholder="Create Username" className="input-styled p-2" type="username" name="username" autoFocus />
                                     </Form.Group>
                                     <Form.Row>
                                         <Form.Group as={Col}>
@@ -87,8 +95,9 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                                         </Form.Group>
                                     </Form.Row>
                                     <small className="error-message">{signUpFormError}</small>
-                                    <button className="button-main entry-form-button" type="submit">
+                                    <button className="button-main entry-form-button" type="submit" disabled={buttonDisabled.signup}>
                                         Sign up
+                                         <img style={buttonDisabled.signup ? { display: "inline-block" } : { display: "none" }} height="30px" alt="...loading" src={Loader} />
                                     </button>
                                 </Form>
                             </section>
