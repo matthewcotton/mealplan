@@ -2,9 +2,8 @@
 @import './styles/branding/colours';
 @import './styles/branding/fonts';
 // component imports
- Dashboard
-@import './styles/Dashboard'
-@import "./styles/components/global/buttons";
+@import './styles/Dashboard';
+@import './styles/components/global/buttons';
 @import './styles/components/LoginPage/entry';
 // global imports
 @import './styles/App'
