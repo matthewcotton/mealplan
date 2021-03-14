@@ -1,5 +1,6 @@
 import React from 'react';
-import {Card, Button, Container, Row, Col} from 'react-bootstrap';
+import {Card, Container, Row, Col} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
   render() {
@@ -10,14 +11,18 @@ class Dashboard extends React.Component {
             <Col>
       <Card className="cards">
   <Card.Body>
-    <Button className="button" variant="primary">Add Recipe</Button>
+  <button className="button">
+    <Link className="link"  to="users">Add Recipe</Link>              
+</button>
   </Card.Body>
 </Card>
 </Col>
 <Col>
 <Card className="cards">
   <Card.Body>
-    <Button className="button" variant="primary">View Recipes</Button>
+  <button className="button">
+    <Link className="link" to="users">View Recipes</Link>              
+</button>
   </Card.Body>
 </Card>
 </Col>
@@ -26,14 +31,18 @@ class Dashboard extends React.Component {
             <Col>
       <Card className="cards">
   <Card.Body>
-    <Button className="button" variant="primary">Create Meal Plan</Button>
+  <button className="button">
+    <Link className="link" to="users">Create Meal Plan</Link>              
+</button>
   </Card.Body>
 </Card>
 </Col>
 <Col>
 <Card className="cards">
   <Card.Body>
-    <Button className="button" variant="primary">View Meal Plans</Button>
+  <button className="button" variant="primary">
+    <Link className="link" to="users">View Meal Plans</Link>              
+</button>
   </Card.Body>
 </Card>
 </Col>
