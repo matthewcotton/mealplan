@@ -3,19 +3,14 @@ const url = "https://mealplan-api.herokuapp.com/";
 
 export default class apiClient {
 
-
     async signUp(username, password) {
         return await axios({
-            methd: 'post',
+            method: 'post',
             url: `${url}user/add`,
             data: {
                 username,
                 password
             }
-        })
-            .catch(err => {
-                console.log(err);
-                alert(err);
         })
     }
 

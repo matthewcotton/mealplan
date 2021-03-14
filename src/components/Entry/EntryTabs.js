@@ -1,36 +1,35 @@
 import React, { useState } from 'react'
+import toastr from 'toastr'
 import { Container, Form, Col } from 'react-bootstrap'
 import LogoGrey from '../../assets/images/logo-grey.png'
 
-let EntryTabs = ({apiClient}) => {
+let EntryTabs = ({ apiClient, logInFunc }) => {
     let [tabShow, setTabShow] = useState("left")
     let [signUpFormError, setSignUpFormError] = useState("");
     let [logInFormError, setLogInFormError] = useState("")
-
+    
     let handleSignUp = (e) => {
         e.preventDefault();
         // reference for username & both passwords
-        let username= e.target.username.value
+        let username = e.target.username.value
         let password = e.target.password.value
         let passwordCheck = e.target.passwordCheck.value
         // check if both passwords are correct
-        if(password !== passwordCheck) {
+        if (password !== passwordCheck) {
             setSignUpFormError("Error! Your passwords don't match.")
         } else {
             // if both passwords are correct, send data to API and process response status
             apiClient.signUp(username, password)
                 .then(response => {
-                    console.log(response)
-                    // if(response. === 409) {
-                    //     setFormError(response.)
-                    // } else {
-                        // show a success messagae
-                        // clear form and switch to 
-                    // }
+                    toastr.success(response.data.message)
+                    setTabShow("left")
+                    e.target.username.value = ""
+                    e.target.password.value = ""
+                    e.target.passwordCheck.value = ""
                 })
                 .catch(err => {
-                    alert("Unable to create an account at this time.")
-                    console.log(err)
+                    alert(err) // needs looking at handling errors better
+                    console.error(err)
                 })
         }
     }
@@ -39,15 +38,15 @@ let EntryTabs = ({apiClient}) => {
         e.preventDefault();
         let username = e.target.username.value;
         let password = e.target.password.value;
-        // apiClient.logIn(username, password)
-        //      .then(reponse => {
-        //          if(response. ===  401 || response. === 403) {
-        //             setLogInFormError(response.)
-        // }
-        // })
-
+        apiClient.logIn(username, password)
+            .then(response => {
+                logInFunc(response.data.token)
+            })
+            .catch(err => {
+                alert("Sorry, unable to login.")
+                console.log(err)
+            })
     }
-
 
     return (
         <>
@@ -56,12 +55,12 @@ let EntryTabs = ({apiClient}) => {
                     <img alt="grey logo" src={LogoGrey} />
                     <section className="tabs-container">
                         <div className="tabs-container-header">
-                            <div onClick={() => setTabShow("left")} className={tabShow === "left" ? "tab-active" : "tab-inactive"}><h5>Existing User</h5></div>
-                            <div onClick={() => setTabShow("right")} className={tabShow === "right" ? "tab-active" : "tab-inactive"}><h5>New User</h5></div>
+                            <div onClick={() => setTabShow("left")} className={tabShow === "left" ? "tab-active" : "tab-inactive"}><h5>Log In</h5></div>
+                            <div onClick={() => setTabShow("right")} className={tabShow === "right" ? "tab-active" : "tab-inactive"}><h5>Sign Up</h5></div>
                         </div>
                         <div className="tabs-container-body">
                             <section style={tabShow === "left" ? { display: "block" } : { display: "none" }}>
-                                <Form>
+                                <Form onSubmit={(e) => handleLogIn(e)}>
                                     <Form.Group controlId="formBasicEmail">
                                         <input required style={{ width: "100%" }} placeholder="Username" className="input-styled p-2" type="username" name="username" autoFocus />
                                     </Form.Group>
