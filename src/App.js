@@ -19,7 +19,6 @@ function App() {
   let logInFunc = (userToken) => {
     isLoggedInHandler(true)
     window.localStorage.setItem("UserToken", userToken);
-    console.log("logged in!")
   }
   
   let logOutFunc = () => {
@@ -34,7 +33,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
-          <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} />
+          <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} props={{exampleProp: "prop"}}/>
           <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} />
           <ProtectedRoute exact path="/user/recipes" isLoggedIn={isLoggedIn} component={RecipeFeed} />
           <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn} component={CreateRecipe} />

@@ -7,8 +7,10 @@ import Loader from '../../assets/images/loading-gif.gif'
 
 let EntryTabs = ({ apiClient, logInFunc }) => {
     let [tabShow, setTabShow] = useState("left")
-    let [signUpFormError, setSignUpFormError] = useState("");
-    let [logInFormError, setLogInFormError] = useState("")
+    let [formError, setFormError] = useState({
+        logIn: "",
+        signUp: ""
+    });
     let [buttonDisabled, setButtonDisabled] = useState({ login: false, signup: false })
 
     let handleSignUp = (e) => {
@@ -19,7 +21,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         let passwordCheck = e.target.passwordCheck.value
         // check if both passwords are correct
         if (password !== passwordCheck) {
-            setSignUpFormError("Your passwords don't match.")
+            setFormError({ signUp: "Your passwords don't match."})
         } else {
             setButtonDisabled({ signup: true })
             // if both passwords are correct, send data to API and process response status
@@ -49,7 +51,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                 logInFunc(response.data.token)
             })
             .catch(err => {
-                alert("Sorry, unable to login.")
+                // setFormError({ logIn: err })
                 console.log(err)
             })
             .finally(() => setButtonDisabled({ login: false }))
@@ -74,7 +76,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                                     <Form.Group controlId="formBasicPassword">
                                         <input required style={{ width: "100%" }} placeholder="Password" className="input-styled p-2" type="Password" name="password" />
                                     </Form.Group>
-                                    <small className="error-message">{logInFormError}</small>
+                                    <small className="error-message">{formError.logIn}</small>
                                     <button className="button-main entry-form-button" type="submit" disabled={buttonDisabled.login}>
                                         Login
                                         <img style={buttonDisabled.login ? { display: "inline-block" } : { display: "none" }} height="30px" alt="...loading" src={Loader} />
@@ -94,7 +96,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                                             <input style={{ width: "100%" }} placeholder="Re-type Password" className="input-styled p-2" type="Password" name="passwordCheck" />
                                         </Form.Group>
                                     </Form.Row>
-                                    <small className="error-message">{signUpFormError}</small>
+                                    <small className="error-message">{formError.signUp}</small>
                                     <button className="button-main entry-form-button" type="submit" disabled={buttonDisabled.signup}>
                                         Sign up
                                          <img style={buttonDisabled.signup ? { display: "inline-block" } : { display: "none" }} height="30px" alt="...loading" src={Loader} />

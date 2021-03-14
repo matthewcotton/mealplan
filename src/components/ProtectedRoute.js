@@ -1,9 +1,9 @@
 import { Route, Redirect } from 'react-router-dom'
 
-let ProtectedRoute = ({ component: Component, isLoggedIn }) => {
+let ProtectedRoute = ({ component: Component, isLoggedIn, props}) => {
 
     return (
-        <Route render={(props) => isLoggedIn ?
+        <Route render={() => isLoggedIn ?
             (<Component {...props} />) : (<Redirect to={{ pathname: "/" }} />)
         } />
     )
