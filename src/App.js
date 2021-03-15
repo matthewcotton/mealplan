@@ -27,9 +27,9 @@ function App() {
   }
 
   // uncomment line 31 to logout current use
-  // window.localStorage.removeItem("UserToken")
+  window.localStorage.removeItem("UserToken")
   return (
-    <div className="App">
+    <div className="App py-5">
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
