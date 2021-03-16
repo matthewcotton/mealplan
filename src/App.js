@@ -1,6 +1,6 @@
 import './App.scss';
 import 'toastr/build/toastr.min.css'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry, Dashboard, Account } from './pages'
@@ -15,19 +15,24 @@ function App() {
   const [isLoggedIn, isLoggedInHandler] = useState(false);
   let apiClient = new ApiClient();
 
+  // fecthes UserToken from local storage on every reload
+  useEffect(() => {
+    if (localStorage.getItem("UserToken")) {
+      isLoggedInHandler(true)
+    } else {
+      isLoggedInHandler(false)
+    }
+  }, []);
+
 
   let logInFunc = (userToken) => {
     isLoggedInHandler(true)
     window.localStorage.setItem("UserToken", userToken);
   }
   
-  let logOutFunc = () => {
-    window.localStorage.removeItem("UserToken");
-    isLoggedInHandler(false)
-  }
 
-  // uncomment line 31 to logout current use
-  window.localStorage.removeItem("UserToken")
+  // uncomment line 31 to logout current user
+  // window.localStorage.removeItem("UserToken")
   return (
     <div className="App py-5">
       <Router>

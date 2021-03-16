@@ -16,9 +16,6 @@ button[disabled] {
     @extend %button-shared;
     background-color: $darkGrey;
     color: #fff;
-    &:hover {
-        background-color: #504769;
-    }
 }
 .entry-form-button {
     width: 100%;
