@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import 'toastr/build/toastr.min.css';
 import toastr from 'toastr'
-import 'toastr/build/toastr.min.css'
 import { Container, Form, Col } from 'react-bootstrap'
 import LogoGrey from '../../assets/images/logo-grey.png'
 import Loader from '../../assets/images/loading-gif.gif'
+import InfoModal from '../Entry/InfoModal'
 
 let EntryTabs = ({ apiClient, logInFunc }) => {
     let [tabShow, setTabShow] = useState("left")
@@ -12,6 +13,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         signUp: ""
     });
     let [buttonDisabled, setButtonDisabled] = useState({ login: false, signup: false })
+    let [modalState, setModalState] = useState(false)
 
     let handleSignUp = (e) => {
         e.preventDefault();
@@ -29,13 +31,18 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                 .then(response => {
                     toastr.success(response.data.message)
                     setTabShow("left")
+                    setFormError({ signUp: "" })
                     e.target.username.value = ""
                     e.target.password.value = ""
                     e.target.passwordCheck.value = ""
                 })
                 .catch(err => {
-                    alert(err) // look at handling errors better - require a response to output message
-                    console.error(err)
+                    if (err.response.status === 409) {
+                        setFormError({ signUp: "Username already exists. Please use a different username." })
+                    } else {
+                        setFormError({ signUp: "Error creating account. Please try again later." })
+                    }
+
                 })
                 .finally(() => setButtonDisabled({ signup: false }))
         }
@@ -51,8 +58,12 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                 logInFunc(response.data.token)
             })
             .catch(err => {
-                // setFormError({ logIn: err })
-                console.log(err)
+                console.log(err.response)
+                if (err.response.status === 401 || err.response.status === 403) {
+                    setFormError({ logIn: "Incorrect username or password." })
+                } else {
+                    setFormError({logIn: "Unable to log in at this moment, Please try again later."})
+                }
             })
             .finally(() => setButtonDisabled({ login: false }))
     }
@@ -92,7 +103,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                                         <input required style={{ width: "100%" }} placeholder="Create Password" className="input-styled p-2" type="Password" name="password" />
                                     </Form.Group>
                                     <Form.Group as={Col}>
-                                        <input style={{ width: "100%" }} placeholder="Re-type Password" className="input-styled p-2" type="Password" name="passwordCheck" />
+                                        <input as={Col} style={{ width: "100%" }} placeholder="Re-type Password" className="input-styled p-2" type="Password" name="passwordCheck" />
                                     </Form.Group>
                                 </Form.Row>
                                 <small className="error-message">{formError.signUp}</small>
@@ -105,6 +116,10 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                     </div>
                 </section>
             </section>
+            <div className="pt-3 d-flex justify-content-center align-items-center">
+                <svg onClick={() => setModalState(true)} id="entry-question-mark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle" class="svg-inline--fa fa-question-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg>
+            </div>
+            <InfoModal show={modalState} close={() => setModalState(false)} />
         </Container>
     )
 }

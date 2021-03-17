@@ -1,7 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import 'toastr/build/toastr.min.css'
+import 'toastr/build/toastr.min.css';
 import React, { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry, Dashboard, Account } from './pages'
 import { CreateRecipe, RecipeFeed, SingleRecipe } from './pages/RecipePages'
