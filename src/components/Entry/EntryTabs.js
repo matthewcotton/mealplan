@@ -12,8 +12,8 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         logIn: "",
         signUp: ""
     });
-    let [buttonDisabled, setButtonDisabled] = useState({ login: false, signup: false })
-    let [modalState, setModalState] = useState(false)
+    let [buttonDisabled, setButtonDisabled] = useState({ login: false, signup: false });
+    let [modalState, setModalState] = useState(false);
 
     let handleSignUp = (e) => {
         e.preventDefault();
@@ -42,7 +42,6 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                     } else {
                         setFormError({ signUp: "Error creating account. Please try again later." })
                     }
-
                 })
                 .finally(() => setButtonDisabled({ signup: false }))
         }
@@ -55,14 +54,14 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         setButtonDisabled({ login: true })
         apiClient.logIn(username, password)
             .then(response => {
-                logInFunc(response.data.token)
+                const newUser = { username: response.data.username }
+                logInFunc(newUser, response.data.token)
             })
             .catch(err => {
-                console.log(err.response)
                 if (err.response.status === 401 || err.response.status === 403) {
                     setFormError({ logIn: "Incorrect username or password." })
                 } else {
-                    setFormError({logIn: "Unable to log in at this moment, Please try again later."})
+                    setFormError({logIn: "Unable to log in at this moment. Please try again later."})
                 }
             })
             .finally(() => setButtonDisabled({ login: false }))
