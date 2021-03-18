@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-import {BsPlusCircle} from 'react-icons/bs';
+import {FaPlus} from 'react-icons/fa';
 
  class AddRecipe extends React.Component {
     state = {
@@ -12,6 +12,7 @@ import {BsPlusCircle} from 'react-icons/bs';
         unit:  [{unit:""}],
         ingredient:  [{ingredient:""}],
         steps: [{steps:""}],
+        number: [{number:""}],
       };
     
       submitHandler = event => {
@@ -130,7 +131,7 @@ import {BsPlusCircle} from 'react-icons/bs';
               <br />
               <Row>
                <Button className="btn1" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}>
-              <BsPlusCircle />
+              <FaPlus />
               </Button>
                   <Col>
                   <label
@@ -196,9 +197,26 @@ import {BsPlusCircle} from 'react-icons/bs';
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
-              <Button className="btn1" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:""}]}))}}>
-              <BsPlusCircle />
+              <Button className="btn1" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:"", number:""}]}))}}>
+              <FaPlus />
               </Button>
+              <Col xs={2}>
+              <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+              {this.state.steps.map(number=> (
+                <input 
+                  onChange={this.changeHandler}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="1"
+                  required
+                />
+              ))}
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
                   <Col>
                 <label
                   htmlFor="defaultFormRegisterNameEx"
