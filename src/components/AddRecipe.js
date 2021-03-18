@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import {BsPlusCircle} from 'react-icons/bs';
 
  class AddRecipe extends React.Component {
     state = {
@@ -7,9 +8,10 @@ import {Container, Row, Col} from 'react-bootstrap';
         preptime: "",
         cooktime: "",
         serves: "",
-        measurement: "",
-        unit: "",
-        ingredient: "",
+        measurement: [{measurement:""}],
+        unit:  [{unit:""}],
+        ingredient:  [{ingredient:""}],
+        steps: [{steps:""}],
       };
     
       submitHandler = event => {
@@ -59,7 +61,7 @@ import {Container, Row, Col} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="preptime"
@@ -83,7 +85,7 @@ import {Container, Row, Col} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="cooktime"
@@ -107,7 +109,7 @@ import {Container, Row, Col} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="serves"
@@ -127,21 +129,24 @@ import {Container, Row, Col} from 'react-bootstrap';
               <h2 className="header2">Add Ingredients</h2>
               <br />
               <Row>
+               <Button className="btn" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}>
+              <BsPlusCircle />
+              </Button>
                   <Col>
                   <label
                   htmlFor="defaultFormRegisterNameEx"
                   className="grey-text"
                 >
               </label>
+              {this.state.measurement.map(measurement=> (
                 <input type="text"
-                  value={this.state.measurement}
-                  name="measurement"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
                   placeholder="Measurement"
                   required
                 />
+              ))}
                 <div className="valid-feedback">Looks good!</div>
                   </Col>
                   <Col>
@@ -150,9 +155,10 @@ import {Container, Row, Col} from 'react-bootstrap';
                   className="grey-text"
                 >
               </label>
+              {this.state.measurement.map(unit=> (
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"
@@ -167,6 +173,7 @@ import {Container, Row, Col} from 'react-bootstrap';
                   <option value="7">oz(Ounce)</option>
                   <option value="8">Tbsp(Tablespoon)</option>
                 </select>
+              ))}
                   </Col>
                   <Col>
                   <label
@@ -174,8 +181,8 @@ import {Container, Row, Col} from 'react-bootstrap';
                   className="grey-text"
                 >
               </label>
+              {this.state.measurement.map(ingredient=> (
                 <input type="text"
-                  value={this.state.ingredient}
                   name="ingredient"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
@@ -183,13 +190,32 @@ import {Container, Row, Col} from 'react-bootstrap';
                   placeholder="Ingredient"
                   required
                 />
+              ))}
                 <div className="valid-feedback">Looks good!</div>
                   </Col>
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
+              <Button className="btn" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:""}]}))}}>
+              <BsPlusCircle />
+              </Button>
                   <Col>
-                  </Col>
+                <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+              {this.state.steps.map(steps=> (
+                <input type="text"
+                  onChange={this.changeHandler}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Step One"
+                  required
+                />
+              ))}
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
               </Row>
               </form>
               </div>
