@@ -129,7 +129,7 @@ import {BsPlusCircle} from 'react-icons/bs';
               <h2 className="header2">Add Ingredients</h2>
               <br />
               <Row>
-               <Button className="btn" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}>
+               <Button className="btn1" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}>
               <BsPlusCircle />
               </Button>
                   <Col>
@@ -196,7 +196,7 @@ import {BsPlusCircle} from 'react-icons/bs';
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
-              <Button className="btn" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:""}]}))}}>
+              <Button className="btn1" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:""}]}))}}>
               <BsPlusCircle />
               </Button>
                   <Col>
@@ -217,6 +217,9 @@ import {BsPlusCircle} from 'react-icons/bs';
                 <div className="valid-feedback">Looks good!</div>
               </Col>
               </Row>
+              <Button className="btn2">
+                  Create Recipe
+              </Button>
               </form>
               </div>
               </Container>
