@@ -7,7 +7,7 @@ let EntryTabs = () => {
 
     return (
         <>
-            <Container className="pt-5">
+            <Container className="pt-5 feed-continer">
                 <section className="d-flex flex-column justify-content-center align-items-center">
                     <img alt="grey logo" src={LogoGrey} />
                     <section className="tabs-container">

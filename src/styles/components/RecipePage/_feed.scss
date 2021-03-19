@@ -1,0 +1,12 @@
+.feed {
+  &-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid $grey;
+    background-color: $lightGrey;
+  }
+
+  a {
+    color: $lightGrey;
+  }
+}

@@ -1,9 +1,9 @@
-import './App.scss';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import {Entry, Dashboard, Account} from './pages'
-import {CreateRecipe, RecipeFeed, SingleRecipe} from './pages/RecipePages'
-import {CreateMealPlan, MealPlanFeed, SingleMealPlan} from './pages/MealPlanPages'
+import { Entry, Dashboard, Account } from "./pages";
+import { CreateRecipe, RecipeFeed, SingleRecipe } from "./pages/RecipePages";
+import { CreateMealPlan, MealPlanFeed, SingleMealPlan,} from "./pages/MealPlanPages";
 
 function App() {
   return (
