@@ -1,7 +1,10 @@
 // branding imports
+@import './styles/branding/breakpoints';
 @import './styles/branding/colours';
 @import './styles/branding/fonts';
 // component imports
+@import "./styles/components/buttons";
+@import './styles/pages/LoginPage/entry';
 @import './styles/Dashboard';
 @import './styles/components/global/buttons';
 @import './styles/components/LoginPage/entry';

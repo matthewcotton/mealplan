@@ -5,7 +5,8 @@ import DashboardPage from '../components/DashboardPage';
 
 
 
-let Dashboard = () => {
+let Dashboard = (props) => {
+
     return (
         <>
             <DashboardPage />
