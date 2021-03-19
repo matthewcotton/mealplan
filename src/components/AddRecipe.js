@@ -208,6 +208,7 @@ import {FaPlus} from 'react-icons/fa';
               </label>
               {this.state.steps.map(number=> (
                 <input 
+                type="number"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
