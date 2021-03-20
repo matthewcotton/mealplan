@@ -6,6 +6,7 @@ import AddRecipe from '../../components/AddRecipe';
 let CreateRecipe = () => {
     return (
         <>
+        <h1>Create A Recipe</h1>
             <AddRecipe />
         </>
     )

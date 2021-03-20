@@ -11,7 +11,7 @@ import {FaPlus} from 'react-icons/fa';
         measurement: [{measurement:""}],
         unit:  [{unit:""}],
         ingredient:  [{ingredient:""}],
-        steps: [{steps:""}],
+        steps: [{steps:""  }],
         number: [{number:""}],
       };
     
@@ -28,7 +28,6 @@ import {FaPlus} from 'react-icons/fa';
         return (
             <Container>
         <div className="Form">
-          <h1 className="header1">Create A Recipe</h1>
           <form
             className="needs-validation"
             onSubmit={this.submitHandler}
@@ -68,14 +67,14 @@ import {FaPlus} from 'react-icons/fa';
                   name="preptime"
                   placeholder="Prep Time">
                   <option value="">Prep Time</option>
-                  <option value="1">5 minutes</option>
-                  <option value="2">10 minutes</option>
-                  <option value="3">15 minutes</option>
-                  <option value="4">20 minutes</option>
-                  <option value="5">25 minutes</option>
-                  <option value="6">30 minutes</option>
-                  <option value="7">35 minutes</option>
-                  <option value="8">40 minutes</option>
+                  <option value="5 minutes">5 minutes</option>
+                  <option value="10 minutes">10 minutes</option>
+                  <option value="15 minutes">15 minutes</option>
+                  <option value="20 minutes">20 minutes</option>
+                  <option value="25 minutes">25 minutes</option>
+                  <option value="30 minutes">30 minutes</option>
+                  <option value="35 minutes">35 minutes</option>
+                  <option value="40 minutes">40 minutes</option>
                 </select>
                   </Col>
                   <Col>
@@ -92,14 +91,14 @@ import {FaPlus} from 'react-icons/fa';
                   name="cooktime"
                   placeholder="Cook Time">
                   <option value="">Cook Time</option>
-                  <option value="1">10 minutes</option>
-                  <option value="2">20 minutes</option>
-                  <option value="3">30 minutes</option>
-                  <option value="4">40 minutes</option>
-                  <option value="5">50 minutes</option>
-                  <option value="6">1 Hour</option>
-                  <option value="7">1.30 Hours</option>
-                  <option value="8">2 Hours</option>
+                  <option value="10 minutes">10 minutes</option>
+                  <option value="20 minutes">20 minutes</option>
+                  <option value="30 minutes">30 minutes</option>
+                  <option value="40 minutes">40 minutes</option>
+                  <option value="50 minutes">50 minutes</option>
+                  <option value="1 Hour">1 Hour</option>
+                  <option value="1.30 Hours">1.30 Hours</option>
+                  <option value="2 Hours">2 Hours</option>
                 </select>
                   </Col>
                   <Col>
@@ -127,10 +126,12 @@ import {FaPlus} from 'react-icons/fa';
                 </select>
                   </Col>
               </Row>
-              <h2 className="header2">Add Ingredients</h2>
+              <h2 className="header1">Add Ingredients</h2>
               <br />
               <Row>
-               <Button className="btn1" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}>
+               <Button className="button-plus" onClick={()=>{
+                  this.setState(previousState=>({measurement:[...previousState.measurement,
+                  {measurement:"", unit:"", ingredients:""}]}))}}>
               <FaPlus />
               </Button>
                   <Col>
@@ -141,6 +142,7 @@ import {FaPlus} from 'react-icons/fa';
               </label>
               {this.state.measurement.map(measurement=> (
                 <input type="text"
+                key={measurement.name}
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
@@ -159,20 +161,21 @@ import {FaPlus} from 'react-icons/fa';
               {this.state.measurement.map(unit=> (
                 <select
                   onChange={this.changeHandler}
+                  key={unit.name}
                   type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"
                   placeholder="Unit">
                   <option value="">Unit</option>
-                  <option value="1">c(Cup)</option>
-                  <option value="2">l(Liter)</option>
-                  <option value="3">kg(Kilogram)</option>
-                  <option value="4">g(Gram)</option>
-                  <option value="5">tsp(Teaspoon)</option>
-                  <option value="6">dp(Drop)</option>
-                  <option value="7">oz(Ounce)</option>
-                  <option value="8">Tbsp(Tablespoon)</option>
+                  <option value="c(Cup)">c(Cup)</option>
+                  <option value="l(Liter)">l(Liter)</option>
+                  <option value="kg(Kilogram)">kg(Kilogram)</option>
+                  <option value="g(Gram)">g(Gram)</option>
+                  <option value="tsp(Teaspoon)">tsp(Teaspoon)</option>
+                  <option value="dp(Drop)">dp(Drop)</option>
+                  <option value="oz(Ounce)">oz(Ounce)</option>
+                  <option value="Tbsp(Tablespoon)">Tbsp(Tablespoon)</option>
                 </select>
               ))}
                   </Col>
@@ -184,6 +187,7 @@ import {FaPlus} from 'react-icons/fa';
               </label>
               {this.state.measurement.map(ingredient=> (
                 <input type="text"
+                key={ingredient.name}
                   name="ingredient"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
@@ -195,9 +199,12 @@ import {FaPlus} from 'react-icons/fa';
                 <div className="valid-feedback">Looks good!</div>
                   </Col>
               </Row>
-              <h2 className="header2">Add Steps</h2>
+              <h2 className="header1">Add Steps</h2>
               <Row>
-              <Button className="btn1" onClick={()=>{this.setState(previousState=>({steps:[...previousState.steps,{steps:"", number:""}]}))}}>
+              <Button className="button-plus" onClick={()=>{
+                        this.setState(previousState=>({steps:[...previousState.steps,
+                         {steps:"", number:previousState.currentStep}],
+                          currentStep: previousState.currentStep++}))}}>
               <FaPlus />
               </Button>
               <Col xs={2}>
@@ -208,7 +215,7 @@ import {FaPlus} from 'react-icons/fa';
               </label>
               {this.state.steps.map(number=> (
                 <input 
-                type="number"
+                key={number.name}
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
@@ -226,6 +233,7 @@ import {FaPlus} from 'react-icons/fa';
               </label>
               {this.state.steps.map(steps=> (
                 <input type="text"
+                key={steps.name}
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
@@ -236,7 +244,7 @@ import {FaPlus} from 'react-icons/fa';
                 <div className="valid-feedback">Looks good!</div>
               </Col>
               </Row>
-              <Button className="btn2">
+              <Button className="button-submit" color="primary" type="submit">
                   Create Recipe
               </Button>
               </form>
