@@ -7,7 +7,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry, Dashboard, Account } from './pages'
 import { CreateRecipe, RecipeFeed, SingleRecipe } from './pages/RecipePages'
 import { CreateMealPlan, MealPlanFeed, SingleMealPlan } from './pages/MealPlanPages'
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './components/global/ProtectedRoute'
 import ApiClient from './assets/apiClient'
 
 function App() {
