@@ -1,11 +1,22 @@
 // RecipeFeed can be found at /user/recipes
 // this page will show a list of recipes that have been created
 import { useState, useEffect, useCallback } from "react";
-import { Container, Col, Row } from "react-bootstrap";
-import { RecipeButton, RecipeCard } from "../../components";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import { RecipeCard, RecipeModal } from "../../components";
+import { useHistory } from "react-router-dom";
 
 let RecipeFeed = ({ apiClient }) => {
   const [recipes, setRecipes] = useState([]);
+  const [modalState, setModalState] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState({
+    title: "",
+    prep_time: "",
+    cook_time: "",
+    serves: "",
+    ingredients: [{ measurement: "", unit: "", ingredient: "" }],
+    steps: [{ step: "", instruction: "" }],
+  });
+  let history = useHistory();
 
   const refreshPosts = useCallback(async () => {
     const recipesFromServer = await apiClient.getAllRecipes();
@@ -16,13 +27,21 @@ let RecipeFeed = ({ apiClient }) => {
     refreshPosts();
   }, [refreshPosts]);
 
+  const redirectToAddRecipe = () => {
+    history.push("/user/create-recipe");
+  };
+
   const buildFeed = () => {
-    return recipes ? (
+    return recipes.length ? (
       recipes.map((recipe) => {
         return (
           <Row key={recipe._id}>
             <Col>
-              <RecipeCard recipe={recipe} />
+              <RecipeCard
+                recipe={recipe}
+                setModalState={setModalState}
+                setSelectedRecipe={setSelectedRecipe}
+              />
             </Col>
           </Row>
         );
@@ -30,7 +49,7 @@ let RecipeFeed = ({ apiClient }) => {
     ) : (
       <Row>
         <Col className="text-left">
-          <p>No recipes added</p>
+          <p>No recipes available</p>
         </Col>
       </Row>
     );
@@ -44,7 +63,9 @@ let RecipeFeed = ({ apiClient }) => {
             <h1>Recipes</h1>
           </Col>
           <Col className="text-right">
-            <RecipeButton btnText="Add Recipe" btnLink="/user/create-recipe" />
+            <Button className="button-main" onClick={redirectToAddRecipe}>
+              Add Recipe
+            </Button>
           </Col>
         </Row>
         <Row className="justify-content-center">
@@ -52,6 +73,12 @@ let RecipeFeed = ({ apiClient }) => {
             <Container>{buildFeed()}</Container>
           </Col>
         </Row>
+        <RecipeModal
+          show={modalState}
+          setModalState={setModalState}
+          recipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+        />
       </Container>
     </>
   );
