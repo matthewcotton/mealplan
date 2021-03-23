@@ -3,10 +3,10 @@
 // the account page will show activity data about the account
 // user can change their username/password
 import SideNavBar from '../components/global/SideNavBar'
-let Account = () => {
+let Account = (props) => {
     return (
         <>
-            <SideNavBar />
+            <SideNavBar logOut={props.logOutFunc} />
             <h1>Account Page</h1>
 
         </>

@@ -2,9 +2,9 @@
 // this page will show a list of meal plans that have been created
 import SideNavBar from '../../components/global/SideNavBar'
 
-let MealPlanFeed = () => {
+let MealPlanFeed = (props) => {
     return (
-        <>  <SideNavBar />
+        <>  <SideNavBar logOut={props.logOutFunc} />
             <h1>Meal Plan Feed</h1>
         </>
     )

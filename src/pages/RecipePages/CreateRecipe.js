@@ -2,10 +2,10 @@
 // this page has the form to create a recipe
 import SideNavBar from '../../components/global/SideNavBar'
 
-let CreateRecipe = () => {
+let CreateRecipe = (props) => {
     return (
         <>
-            <SideNavBar />
+            <SideNavBar logOut={props.logOutFunc}/>
             <h1>Create Recipe (Recipe Form)</h1>
         </>
     )

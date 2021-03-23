@@ -1,10 +1,10 @@
 // SingleRecipe is found at /user/recipes/:id
 // this page will show a single recipe
 import SideNavBar from '../../components/global/SideNavBar'
-let SingleRecipe = () => {
+let SingleRecipe = (props) => {
     return (
         <>
-        <SideNavBar />
+            <SideNavBar logOut={props.logOutFunc} />
             <h1>Single Recipe Page</h1>
         </>
     )

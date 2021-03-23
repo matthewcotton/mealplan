@@ -9,10 +9,6 @@ let SideNavBar = (props) => {
     const [showNav, setShowNav] = useState(false)
     const user = useLoggedInUser();
 
-    let logOutFunction = () => {
-        window.localStorage.removeItem("UserToken")
-    }
-
     return (
         <>
             {/* toggle hamburger element to close and open side navbar */}
