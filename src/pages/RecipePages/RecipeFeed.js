@@ -1,11 +1,19 @@
 // RecipeFeed can be found at /user/recipes
 // this page will show a list of recipes that have been created
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { RecipeButton, RecipeCard } from "../../components";
 
-let RecipeFeed = () => {
+let RecipeFeed = ({ apiClient }) => {
   const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      return await apiClient.getAllRecipes();
+    }
+    const recipesFromServer = getData();
+    setRecipes(recipesFromServer);
+  }, [apiClient]);
 
   const buildFeed = () => {
     return recipes.length ? (
