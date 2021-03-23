@@ -34,8 +34,8 @@ let SideNavBar = (props) => {
                             <svg style={navStatus.recipes ? { transform: "scaleY(-1)" } : { transform: "scaleY(1)" }} width="19" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z" fill="#ffffff" fill-rule="nonzero" /></svg>
                         </div>
                         <section style={navStatus.recipes ? { display: "block" } : { display: "none" }} className="nav-menu">
-                            <Link to="/user/create-recipe"><p>Create Recipe</p></Link>
-                            <Link to="/user/recipes"><p className="mt-2">View Recipes</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/user/create-recipe"><p>Create Recipe</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/user/recipes"><p className="mt-2">View Recipes</p></Link>
                         </section>
                     </article>
                     <article className="mb-4">
@@ -44,12 +44,12 @@ let SideNavBar = (props) => {
                             <svg style={navStatus.meal_plans ? { transform: "scaleY(-1)" } : { transform: "scaleY(1)" }} width="19" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z" fill="#ffffff" fill-rule="nonzero" /></svg>
                         </div>
                         <section style={navStatus.meal_plans ? { display: "block" } : { display: "none" }} className="nav-menu">
-                            <Link to="/user/create-meal-plan"><p>Create Meal Plan</p></Link>
-                            <Link to="/user/meal-plans"><p className="mt-2">View Meal Plans</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/user/create-meal-plan"><p>Create Meal Plan</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/user/meal-plans"><p className="mt-2">View Meal Plans</p></Link>
                         </section>
                     </article>
                     <article>
-                        <Link to="/user/account"><p>Acccount</p></Link>
+                        <Link style={{ textDecoration: 'none' }} to="/user/account"><p>Acccount</p></Link>
                     </article>
                 </nav>
                 <button onClick={() => props.logOut()} className="button-main button-side-nav">Logout</button>
