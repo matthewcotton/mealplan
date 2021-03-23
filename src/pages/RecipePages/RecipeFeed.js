@@ -22,7 +22,7 @@ let RecipeFeed = ({ apiClient }) => {
         return (
           <Row key={recipe._id}>
             <Col>
-              <RecipeCard  recipe={recipe} />
+              <RecipeCard recipe={recipe} />
             </Col>
           </Row>
         );
@@ -40,7 +40,7 @@ let RecipeFeed = ({ apiClient }) => {
     <>
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
-          <Col className="text-left">
+          <Col xs={12} lg={10} className="text-left">
             <h1>Recipes</h1>
           </Col>
           <Col className="text-right">
@@ -49,10 +49,7 @@ let RecipeFeed = ({ apiClient }) => {
         </Row>
         <Row className="justify-content-center">
           <Col lg={10}>
-            <Container>
-              {buildFeed()}
-              {/* Loop through recipes */}
-            </Container>
+            <Container>{buildFeed()}</Container>
           </Col>
         </Row>
       </Container>
