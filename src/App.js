@@ -16,24 +16,23 @@ function App() {
   const [userLoggedIn, setUserLoggedIn] = useState({});
   let apiClient = new ApiClient();
 
-  // fecthes UserToken from local storage on every reload
+  // fecthes UserToken/user object from local storage on every reload
   useEffect(() => {
     if (localStorage.getItem("UserToken")) {
       isLoggedInHandler(true)
+      setUserLoggedIn(window.localStorage.getItem("User"))
     } else {
       isLoggedInHandler(false)
     }
   }, []);
 
-
   let logInFunc = (user, userToken) => {
     isLoggedInHandler(true)
     setUserLoggedIn(user)
+    window.localStorage.setItem("User", user);
     window.localStorage.setItem("UserToken", userToken);
   }
 
-  // uncomment line 31 to logout current user
-  // window.localStorage.removeItem("UserToken")
   return (
     <div className="App py-5">
       <loggedInUser.Provider value={userLoggedIn} >
