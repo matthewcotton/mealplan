@@ -10,7 +10,7 @@ let Dashboard = (props) => {
 
     return (
         <>
-            <SideNavBar />
+            <SideNavBar logOut={props.logOutFunc}/>
             <DashboardPage />
         </>
     )

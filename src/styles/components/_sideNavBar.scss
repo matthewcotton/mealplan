@@ -5,12 +5,17 @@
     background-color: $darkGrey;
     position: fixed;
     top: 0;
-    left: 0;
     overflow-y:scroll;
     overflow-x:hidden;
     z-index: 3;
     color: #fff;
-    #nav-logo {
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+
+    #nav-logo{
         width: 100%;
         margin: 0 auto;
         display: block;
