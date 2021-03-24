@@ -1,74 +1,165 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
-import {FaPlus} from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
+import { FaPlus } from 'react-icons/fa';
 
- class AddRecipe extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        recipetitle: "",
-        preptime: "",
-        cooktime: "",
+
+class AddRecipe extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        title: "",
+        prep_time: "",
+        cook_time: "",
         serves: "",
-        ingredients: [{measurement:"", unit:"", ingredients:""}],
-      };
-    }
-    
-      submitHandler = event => {
-        event.preventDefault();
-        event.target.value += " was-validated";
-      };
-    
-      changeHandler = e => {
-        this.setState({ 
-            [e.target.name]: e.target.value });
-      };
+      },
+      ingredients: [],
+      steps: [],
+    };
+  }
 
-      
-    
-    render() {
-        return (
-            <Container>
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    //Send data to api
+    let formdata = {};
+    formdata['title'] = this.state.form.title;
+    formdata['prep_time'] = this.state.form.prep_time;
+    formdata['cook_time'] = this.state.form.cook_time;
+    formdata['serves'] = this.state.form.serves;
+    formdata['ingredients'] = this.state.ingredients;
+    formdata['steps'] = this.state.steps;
+    //Turn array into json
+    let payload = JSON.stringify(formdata);
+    console.log(payload);
+  };
+
+
+
+  //Update form data
+  changeHandler = e => {
+    let form = this.state.form;
+    form[e.target.name] = e.target.value
+    this.setState({
+      form: form
+    });
+  };
+
+
+
+  //Add new ingredient to list
+  addIngredients = (e) => {
+    //Get ingredients from
+    let measurementInput = document.getElementById('measurement').value;
+    let unitInput = document.getElementById('unit').value;
+    let ingredientsInput = document.getElementById('ingredients').value;
+    //Add new ingredients to array
+    this.setState((prevState) => ({
+      //concat the new ingredients onto the array list
+      ingredients: [...prevState.ingredients,
+      { measurement: measurementInput, unit: unitInput, ingredients: ingredientsInput }],
+    }));
+  }
+
+
+
+  //Add new step to list
+  addSteps = (e) => {
+    //Get step from
+    let stepInput = document.getElementById('steps').value;
+    let instructionsInput = document.getElementById('instructions').value;
+    //Add new ingredients to array
+    this.setState((prevState) => ({
+      //concat the new ingredients onto the array list
+      steps: [...prevState.steps,
+      { steps: stepInput, instructions: instructionsInput }],
+    }));
+  }
+
+
+
+  //Print table rows
+  printIngredients = () => {
+    return this.state.ingredients.map((ingredient, index) => {
+      //array map requires a key
+      return (
+        <tr key={index}>
+          <td>
+            {ingredient.measurement}
+          </td>
+          <td>
+            {ingredient.unit}
+          </td>
+          <td>
+            {ingredient.ingredients}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+
+   //Print table rows
+   printInstructions = () => {
+    return this.state.steps.map((step, index) => {
+      //array map requires a key
+      return (
+        <tr key={index}>
+          <td>
+            {step.steps}
+          </td>
+          <td>
+            {step.instructions}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+
+
+  render() {
+    return (
+      <Container>
         <div className="Form">
-          <h1 className="header1">Create A Recipe</h1>
+        <h1 className="header1">Create A Recipe</h1>
           <form
             className="needs-validation"
             onSubmit={this.submitHandler}
             noValidate
           >
             <Row>
-              <Col>
+              <Col lg={12}>
                 <label
-                  htmlFor="defaultFormRegisterNameEx"
+                  htmlFor="title"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <input type="text"
-                  value={this.state.recipetitle}
-                  name="recipetitle"
-                  onChange={e => this.changeHandler(e)}
-                  id="defaultFormRegisterNameEx"
+                  onChange={this.changeHandler}
+                  value={this.state.form.title}
+                  name="title"
+                  id="title"
                   className="form-control"
                   placeholder="Recipe Title"
                   required
                 />
                 <div className="valid-feedback">Looks good!</div>
               </Col>
-              </Row>
-              <Row>
-                  <Col>
-                  <label
-                  htmlFor="defaultFormRegisterConfirmEx3"
+            </Row>
+            <Row>
+              <Col>
+                <label
+                  htmlFor="prep_time"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <select
-                  onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
-                  id="defaultFormRegisterConfirmEx3"
+                  onChange={this.changeHandler}
+                  value={this.state.form.preptime}
+                  id="prep_time"
                   className="form-control"
-                  name="preptime"
+                  name="prep_time"
                   placeholder="Prep Time">
                   <option value="">Prep Time</option>
                   <option value="5 minutes">5 minutes</option>
@@ -80,19 +171,19 @@ import { v4 as uuidv4 } from 'uuid';
                   <option value="35 minutes">35 minutes</option>
                   <option value="40 minutes">40 minutes</option>
                 </select>
-                  </Col>
-                  <Col>
-                  <label
-                  htmlFor="defaultFormRegisterConfirmEx3"
+              </Col>
+              <Col>
+                <label
+                  htmlFor="cook_time"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <select
-                  onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
-                  id="defaultFormRegisterConfirmEx3"
+                  onChange={this.changeHandler}
+                  value={this.state.form.cook_time}
+                  id="cook_time"
                   className="form-control"
-                  name="cooktime"
+                  name="cook_time"
                   placeholder="Cook Time">
                   <option value="">Cook Time</option>
                   <option value="10 minutes">10 minutes</option>
@@ -104,17 +195,17 @@ import { v4 as uuidv4 } from 'uuid';
                   <option value="1.30 Hours">1.30 Hours</option>
                   <option value="2 Hours">2 Hours</option>
                 </select>
-                  </Col>
-                  <Col>
-                  <label
-                  htmlFor="defaultFormRegisterConfirmEx3"
+              </Col>
+              <Col>
+                <label
+                  htmlFor="serves"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <select
-                  onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
-                  id="defaultFormRegisterConfirmEx3"
+                  onChange={this.changeHandler}
+                  value={this.state.form.serves}
+                  id="serves"
                   className="form-control"
                   name="serves"
                   placeholder="Serves">
@@ -128,44 +219,38 @@ import { v4 as uuidv4 } from 'uuid';
                   <option value="7">7</option>
                   <option value="8">8</option>
                 </select>
-                  </Col>
-              </Row>
-              <h2 className="header2">Add Ingredients</h2>
-              <br />
-              <Row>
-              <FaPlus className="button-plus" onClick={()=>{
-                  this.setState(previousState=>({ingredients:[...previousState.ingredients,
-                  {measurement:"", unit:"", ingredients:""}]}))}}/>
+              </Col>
+            </Row>
+            <h2 className="header1">Add Ingredients</h2>
+            <br />
+            <Row>
+              <FaPlus className="button-plus" onClick={(e) => {
+                this.addIngredients(e)
+              }} />
               <Col>
-                  <label
-                  htmlFor="defaultFormRegisterNameEx"
+                <label
+                  htmlFor="measurement"
                   className="grey-text"
                 >
-              </label>
-              {this.state.ingredients.map(ingredients=>(
+                </label>
                 <input type="text"
-                key= {uuidv4}
-                  value={this.state.measurement}
-                  name="measurement"
-                  onChange={e => this.changeHandler(e)}
-                  id="defaultFormRegisterNameEx"
+                  //key={uuidv4}
+                  id="measurement"
                   className="form-control"
                   placeholder="Measurement"
+                  name="measurement"
                   required
                 />
-              ))}
                 <div className="valid-feedback">Looks good!</div>
-                </Col>
-                  <Col>
-                  <label
-                  htmlFor="defaultFormRegisterConfirmEx3"
+              </Col>
+              <Col>
+                <label
+                  htmlFor="unit"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <select
-                  onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
-                  id="defaultFormRegisterConfirmEx3"
+                  id="unit"
                   className="form-control"
                   name="unit"
                   placeholder="Unit">
@@ -179,33 +264,98 @@ import { v4 as uuidv4 } from 'uuid';
                   <option value="oz(Ounce)">oz(Ounce)</option>
                   <option value="Tbsp(Tablespoon)">Tbsp(Tablespoon)</option>
                 </select>
-                  </Col>
-                  <Col>
-                  <label
-                  htmlFor="defaultFormRegisterNameEx"
+              </Col>
+              <Col>
+                <label
+                  htmlFor="ingredients"
                   className="grey-text"
                 >
-              </label>
+                </label>
                 <input type="text"
-                  onChange={e => this.changeHandler(e)}
-                  id="defaultFormRegisterNameEx"
+                  id="ingredients"
                   className="form-control"
+                  name="ingredient"
                   placeholder="Ingredients"
                   required
                 />
                 <div className="valid-feedback">Looks good!</div>
-                </Col>
-              </Row>
-              <h2 className="header2">Add Steps</h2>
-              <Row>
-                  <Col>
-                  </Col>
-              </Row>
-              </form>
-              </div>
-              </Container>
-        )
-    }
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Table className="table">
+                  <thead>
+                    <tr>
+                      <th>Measurement</th>
+                      <th>Unit</th>
+                      <th>Ingredient</th>
+                    </tr>
+                  </thead>
+                  <tbody>{this.printIngredients()}</tbody>
+                </Table>
+              </Col>
+            </Row>
+​
+            <h2 className="header1">Add Steps</h2>
+            <Row>
+              <FaPlus className="button-plus" onClick={(e) => {
+                this.addSteps(e)
+              }} />
+              <Col xs="2">
+                <label
+                  htmlFor="steps"
+                  className="grey-text"
+                >
+                </label>
+                  <input type="text"
+                    // key={uuidv4}
+                    //value=""
+                    id="steps"
+                    className="form-control"
+                    placeholder="Insert No"
+                    name="steps"
+                    required
+                  />
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
+              <Col>
+                <label
+                  htmlFor="instructions"
+                  className="grey-text"
+                >
+                </label>
+                <input type="text"
+                  name="instructions"
+                  id="instructions"
+                  className="form-control"
+                  placeholder="Step One"
+                  required
+                />
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Table className="table">
+                  <thead>
+                    <tr>
+                      <th>Step</th>
+                      <th>Instructions</th>
+                    </tr>
+                  </thead>
+                  <tbody>{this.printInstructions()}</tbody>
+                </Table>
+              </Col>
+            </Row>
+            <Button type="button" className="button-submit" onClick={this.submitHandler}>Create Recipe</Button>
+          </form>
+        </div>
+      </Container>
+    )
+  }
 }
 
 export default AddRecipe
+
+
+
