@@ -26,3 +26,12 @@ button[disabled] {
         width: 175px;
     }
 }
+.button-side-nav {
+    width: 100%;
+    background-color: #4e4274;
+    &:hover {
+        background-color: #fff;
+        color: #4e4274;
+        font-weight: 700;
+    }
+}

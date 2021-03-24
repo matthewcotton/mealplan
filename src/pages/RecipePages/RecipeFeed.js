@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { RecipeButton, RecipeCard } from "../../components";
+import SideNavBar from '../../components/global/SideNavBar'
 
 let RecipeFeed = ({ apiClient }) => {
   const [recipes, setRecipes] = useState([]);
@@ -16,7 +17,7 @@ let RecipeFeed = ({ apiClient }) => {
     refreshPosts();
   }, [refreshPosts]);
 
-  const buildFeed = () => {
+  const buildFeed = (props) => {
     return recipes ? (
       recipes.map((recipe) => {
         return (
@@ -38,6 +39,7 @@ let RecipeFeed = ({ apiClient }) => {
 
   return (
     <>
+      <SideNavBar logOut={props.logOutFunc} />
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
           <Col xs={12} lg={10} className="text-left">

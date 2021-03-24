@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { toastr } from "toastr";
 import ApiClient from "./assets/apiClient";
 
+
 function App() {
   // shows whether the user is or isn't logged in
   const [isLoggedIn, isLoggedInHandler] = useState(false);
@@ -20,29 +21,30 @@ function App() {
     () => logOutFunc()
   );
 
-  // fecthes UserToken from local storage on every reload
+  // fecthes UserToken/user object from local storage on every reload
   useEffect(() => {
     if (localStorage.getItem("UserToken")) {
-      isLoggedInHandler(true);
+      isLoggedInHandler(true)
+      setUserLoggedIn(window.localStorage.getItem("User"))
     } else {
       isLoggedInHandler(false);
     }
   }, []);
 
   let logInFunc = (user, userToken) => {
-    isLoggedInHandler(true);
-    setUserLoggedIn(user);
+    isLoggedInHandler(true)
+    setUserLoggedIn(user)
+    window.localStorage.setItem("User", user);
     window.localStorage.setItem("UserToken", userToken);
   };
 
-  const logOutFunc = () => {
+  let logOutFunc = () => {
+    isLoggedInHandler(false)
+    window.localStorage.removeItem("User");
     window.localStorage.removeItem("UserToken");
-    isLoggedInHandler(false);
-    setUserLoggedIn({});
     toastr.info("You have been logged out.");
-  };
-  // uncomment line 31 to logout current user
-  // window.localStorage.removeItem("UserToken")
+  }
+  
   return (
     <div className="App py-5">
       <loggedInUser.Provider value={userLoggedIn}>
