@@ -13,8 +13,8 @@ class AddRecipe extends React.Component {
         cook_time: "",
         serves: "",
       },
-      ingredients: [],
-      steps: [],
+      ingredient: [],
+      step: [],
     };
   }
 
@@ -27,8 +27,8 @@ class AddRecipe extends React.Component {
     formdata['prep_time'] = this.state.form.prep_time;
     formdata['cook_time'] = this.state.form.cook_time;
     formdata['serves'] = this.state.form.serves;
-    formdata['ingredients'] = this.state.ingredients;
-    formdata['steps'] = this.state.steps;
+    formdata['ingredient'] = this.state.ingredient;
+    formdata['step'] = this.state.step;
     //Turn array into json
     let payload = JSON.stringify(formdata);
     console.log(payload);
@@ -52,12 +52,12 @@ class AddRecipe extends React.Component {
     //Get ingredients from
     let measurementInput = document.getElementById('measurement').value;
     let unitInput = document.getElementById('unit').value;
-    let ingredientsInput = document.getElementById('ingredients').value;
+    let ingredientInput = document.getElementById('ingredient').value;
     //Add new ingredients to array
     this.setState((prevState) => ({
       //concat the new ingredients onto the array list
-      ingredients: [...prevState.ingredients,
-      { measurement: measurementInput, unit: unitInput, ingredients: ingredientsInput }],
+      ingredient: [...prevState.ingredient,
+      { measurement: measurementInput, unit: unitInput, ingredient: ingredientInput }],
     }));
   }
 
@@ -66,13 +66,13 @@ class AddRecipe extends React.Component {
   //Add new step to list
   addSteps = (e) => {
     //Get step from
-    let stepInput = document.getElementById('steps').value;
-    let instructionsInput = document.getElementById('instructions').value;
+    let stepInput = document.getElementById('step').value;
+    let instructionInput = document.getElementById('instruction').value;
     //Add new ingredients to array
     this.setState((prevState) => ({
       //concat the new ingredients onto the array list
-      steps: [...prevState.steps,
-      { steps: stepInput, instructions: instructionsInput }],
+      step: [...prevState.step,
+      { step: stepInput, instruction: instructionInput }],
     }));
   }
 
@@ -80,7 +80,7 @@ class AddRecipe extends React.Component {
 
   //Print table rows
   printIngredients = () => {
-    return this.state.ingredients.map((ingredient, index) => {
+    return this.state.ingredient.map((ingredient, index) => {
       //array map requires a key
       return (
         <tr key={index}>
@@ -101,15 +101,15 @@ class AddRecipe extends React.Component {
 
    //Print table rows
    printInstructions = () => {
-    return this.state.steps.map((step, index) => {
+    return this.state.step.map((step, index) => {
       //array map requires a key
       return (
         <tr key={index}>
           <td>
-            {step.steps}
+            {step.step}
           </td>
           <td>
-            {step.instructions}
+            {step.instruction}
           </td>
         </tr>
       );
@@ -122,7 +122,7 @@ class AddRecipe extends React.Component {
     return (
       <Container>
         <div className="Form">
-        <h1 className="header1">Create A Recipe</h1>
+          <h1 className="header1">Create A Recipe</h1>
           <form
             className="needs-validation"
             onSubmit={this.submitHandler}
@@ -221,7 +221,7 @@ class AddRecipe extends React.Component {
                 </select>
               </Col>
             </Row>
-            <h2 className="header1">Add Ingredients</h2>
+            <h2 className="header2">Add Ingredients</h2>
             <br />
             <Row>
               <FaPlus className="button-plus" onClick={(e) => {
@@ -267,15 +267,15 @@ class AddRecipe extends React.Component {
               </Col>
               <Col>
                 <label
-                  htmlFor="ingredients"
+                  htmlFor="ingredient"
                   className="grey-text"
                 >
                 </label>
                 <input type="text"
-                  id="ingredients"
+                  id="ingredient"
                   className="form-control"
                   name="ingredient"
-                  placeholder="Ingredients"
+                  placeholder="Ingredient"
                   required
                 />
                 <div className="valid-feedback">Looks good!</div>
@@ -296,37 +296,37 @@ class AddRecipe extends React.Component {
               </Col>
             </Row>
 ​
-            <h2 className="header1">Add Steps</h2>
+            <h2 className="header2">Add Steps</h2>
             <Row>
               <FaPlus className="button-plus" onClick={(e) => {
                 this.addSteps(e)
               }} />
               <Col xs="2">
                 <label
-                  htmlFor="steps"
+                  htmlFor="step"
                   className="grey-text"
                 >
                 </label>
                   <input type="text"
                     // key={uuidv4}
                     //value=""
-                    id="steps"
+                    id="step"
                     className="form-control"
                     placeholder="Insert No"
-                    name="steps"
+                    name="step"
                     required
                   />
                 <div className="valid-feedback">Looks good!</div>
               </Col>
               <Col>
                 <label
-                  htmlFor="instructions"
+                  htmlFor="instruction"
                   className="grey-text"
                 >
                 </label>
                 <input type="text"
-                  name="instructions"
-                  id="instructions"
+                  name="instruction"
+                  id="instruction"
                   className="form-control"
                   placeholder="Step One"
                   required
