@@ -16,6 +16,8 @@ button[disabled] {
     @extend %button-shared;
     background-color: $darkGrey;
     color: #fff;
+
+    
 }
 .entry-form-button {
     width: 100%;
