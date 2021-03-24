@@ -28,7 +28,7 @@ export const RecipeModal = ({ recipe, show, setModalState }) => {
   };
 
   return (
-    <Container
+    <div
       style={show ? { display: "block" } : { display: "none" }}
       className="recipe-modal-background"
       id="recipe-modal-background"
@@ -56,6 +56,6 @@ export const RecipeModal = ({ recipe, show, setModalState }) => {
           <ul>{buildSteps()}</ul>
         </section>
       </section>
-    </Container>
+    </div>
   );
 };
