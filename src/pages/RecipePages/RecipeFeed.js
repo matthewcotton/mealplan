@@ -59,19 +59,17 @@ let RecipeFeed = ({ apiClient }) => {
     <>
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
-          <Col xs={12} lg={10} className="text-left">
+          <Col xs={6} className="text-left">
             <h1>Recipes</h1>
           </Col>
-          <Col className="text-right">
+          <Col xs={6} className="text-right">
             <Button className="button-main" onClick={redirectToAddRecipe}>
               Add Recipe
             </Button>
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col lg={10}>
-            <Container>{buildFeed()}</Container>
-          </Col>
+          <Col lg={12}>{buildFeed()}</Col>
         </Row>
         <RecipeModal
           show={modalState}

@@ -16,7 +16,7 @@ export const RecipeCard = ({ recipe, setModalState, setSelectedRecipe }) => {
   };
 
   return (
-    <Card className="recipe-card">
+    <Card className="mx-0 recipe-card">
       <Card.Img className="recipe-img" src={DefaultImg} />
       <Card.Body className="recipe-body">
         <Card.Title>{recipe.title}</Card.Title>
