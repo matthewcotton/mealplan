@@ -1,4 +1,7 @@
 let MealPlanForm = () => {
+
+    // duration should be a number
+
     return (
         <section className="meal-plan-form">
             <div className="meal-plan-form-title">

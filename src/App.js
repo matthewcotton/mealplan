@@ -24,7 +24,9 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("UserToken")) {
       isLoggedInHandler(true)
-      setUserLoggedIn(window.localStorage.getItem("User"))
+      const loggedInUser = window.localStorage.getItem("User")
+      console.log(JSON.parse(loggedInUser))
+      setUserLoggedIn(JSON.parse(loggedInUser))
     } else {
       isLoggedInHandler(false);
     }
@@ -33,7 +35,7 @@ function App() {
   let logInFunc = (user, userToken) => {
     isLoggedInHandler(true)
     setUserLoggedIn(user)
-    window.localStorage.setItem("User", user);
+    window.localStorage.setItem("User", JSON.stringify(user));
     window.localStorage.setItem("UserToken", userToken);
   };
 
@@ -42,13 +44,13 @@ function App() {
     window.localStorage.removeItem("User");
     window.localStorage.removeItem("UserToken");
   }
-  
+
   return (
     <div className="App py-5">
       <loggedInUser.Provider value={userLoggedIn}>
         <Router>
           <Switch>
-          <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
+            <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
             <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/recipe" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
@@ -57,7 +59,7 @@ function App() {
             <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/meal-plans" isLoggedIn={isLoggedIn} component={MealPlanFeed} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn} component={SingleMealPlan} logOutFunc={logOutFunc} />
-            
+
           </Switch>
         </Router>
       </loggedInUser.Provider>
