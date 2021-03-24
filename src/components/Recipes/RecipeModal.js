@@ -20,9 +20,19 @@ export const RecipeModal = ({ recipe, show, setModalState }) => {
     });
   };
 
-  console.log(recipe);
+  var modal = document.getElementById("recipe-modal-background");
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      setModalState(false);
+    }
+  };
+
   return (
-    <Container className="recipe-modal-container">
+    <Container
+      style={show ? { display: "block" } : { display: "none" }}
+      className="recipe-modal-background"
+      id="recipe-modal-background"
+    >
       <section style={show ? { display: "block" } : { display: "none" }} className="recipe-modal">
         <span classname="recipe-cross">
           <img
