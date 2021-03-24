@@ -5,7 +5,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import { RecipeButton, RecipeCard } from "../../components";
 import SideNavBar from '../../components/global/SideNavBar'
 
-let RecipeFeed = ({ apiClient }) => {
+let RecipeFeed = ({ apiClient, logOutFunc }) => {
   const [recipes, setRecipes] = useState([]);
 
   const refreshPosts = useCallback(async () => {
@@ -17,7 +17,7 @@ let RecipeFeed = ({ apiClient }) => {
     refreshPosts();
   }, [refreshPosts]);
 
-  const buildFeed = (props) => {
+  const buildFeed = () => {
     return recipes ? (
       recipes.map((recipe) => {
         return (
@@ -39,7 +39,7 @@ let RecipeFeed = ({ apiClient }) => {
 
   return (
     <>
-      <SideNavBar logOut={props.logOutFunc} />
+      <SideNavBar logOut={logOutFunc} />
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
           <Col xs={12} lg={10} className="text-left">

@@ -7,8 +7,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry, Dashboard, Account } from "./pages";
 import { CreateRecipe, RecipeFeed, SingleRecipe } from "./pages/RecipePages";
 import { CreateMealPlan, MealPlanFeed, SingleMealPlan } from "./pages/MealPlanPages";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { toastr } from "toastr";
+import ProtectedRoute from "./components/global/ProtectedRoute";
 import ApiClient from "./assets/apiClient";
 
 
@@ -42,7 +41,6 @@ function App() {
     isLoggedInHandler(false)
     window.localStorage.removeItem("User");
     window.localStorage.removeItem("UserToken");
-    toastr.info("You have been logged out.");
   }
   
   return (
@@ -50,31 +48,16 @@ function App() {
       <loggedInUser.Provider value={userLoggedIn}>
         <Router>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />}
-            />
-            <ProtectedRoute
-              exact
-              path="/user"
-              isLoggedIn={isLoggedIn}
-              component={Dashboard}
-              props={{ exampleProp: "prop" }}
-            />
-            <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} />
-            <ProtectedRoute
-              exact
-              path="/user/recipes"
-              isLoggedIn={isLoggedIn}
-              props={{ apiClient: apiClient }}
-              component={RecipeFeed}
-            />
-            <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn} component={CreateRecipe} />
-            <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} component={SingleRecipe} />
-            <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} />
-            <ProtectedRoute exact path="/user/meal-plans" isLoggedIn={isLoggedIn} component={MealPlanFeed} />
-            <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn} component={SingleMealPlan} />
+          <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
+            <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/recipes" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn} component={CreateRecipe} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} component={SingleRecipe} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/meal-plans" isLoggedIn={isLoggedIn} component={MealPlanFeed} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn} component={SingleMealPlan} logOutFunc={logOutFunc} />
+            
           </Switch>
         </Router>
       </loggedInUser.Provider>
