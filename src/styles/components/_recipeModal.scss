@@ -1,9 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .recipe-modal {
-  width: 90%;
-  min-height: 80%;
+  width: 80%;
+  height: 400px;
   position: fixed;
-  top: 5%;
-  left: 5%;
+  top: 50%;
+  left: 50%;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  transform: translate(-50%, -50%);
   z-index: 1;
   border: $grey 1px solid;
   margin-top: 30px;
@@ -15,8 +23,11 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-
-  h3 {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+    h3 {
     color: $darkGrey;
     font-weight: 700;
     padding-bottom: 30px;
@@ -41,5 +52,8 @@
       column-gap: 30px;
       text-align: left;
     }
+  }
+  @include desktop {
+    width: 50%;
   }
 }
