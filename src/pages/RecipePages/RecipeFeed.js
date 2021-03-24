@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { RecipeCard, RecipeModal } from "../../components";
 import { useHistory } from "react-router-dom";
+import SideNavBar from '../../components/global/SideNavBar'
 
-let RecipeFeed = ({ apiClient }) => {
+let RecipeFeed = ({ apiClient, logOutFunc }) => {
   const [recipes, setRecipes] = useState([]);
   const [modalState, setModalState] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState({
@@ -57,6 +58,7 @@ let RecipeFeed = ({ apiClient }) => {
 
   return (
     <>
+      <SideNavBar logOut={logOutFunc} />
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
           <Col xs={6} className="text-left">
