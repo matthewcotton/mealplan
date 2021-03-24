@@ -61,10 +61,10 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
       <SideNavBar logOut={logOutFunc} />
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
-          <Col xs={6} className="text-left">
+          <Col xs={12} sm={6} className="text-left">
             <h1>Recipes</h1>
           </Col>
-          <Col xs={6} className="text-right">
+          <Col xs={12} sm={6} className="text-right">
             <Button className="button-main" onClick={redirectToAddRecipe}>
               Add Recipe
             </Button>
