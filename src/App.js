@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
             <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/recipes" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/recipe" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn} component={CreateRecipe} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} component={SingleRecipe} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} logOutFunc={logOutFunc} />

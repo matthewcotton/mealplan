@@ -1,12 +1,16 @@
 // CreateMealPlan can be found at /user/create-meal-plan
 // this page features the create meal plan form
-import SideNavBar from '../../components/global/SideNavBar'
+import SideNavBar from '../../components/global/SideNavBar';
+import {Container} from 'react-bootstrap'
+import MealPlanForm from '../../components/Meals_Plans/MealPlanForm';
 
 let CreateMealPlan = (props) => {
     return (
         <>
             <SideNavBar logOut={props.logOutFunc} />
-            <h1>Create a Meal Plan (Meal Plan Form)</h1>
+            <Container>
+                <MealPlanForm />
+            </Container>
         </>
     )
 }
