@@ -1,12 +1,23 @@
 // RecipeFeed can be found at /user/recipes
 // this page will show a list of recipes that have been created
 import { useState, useEffect, useCallback } from "react";
-import { Container, Col, Row } from "react-bootstrap";
-import { RecipeButton, RecipeCard } from "../../components";
+import { Container, Col, Row, Button } from "react-bootstrap";
+import { RecipeCard, RecipeModal } from "../../components";
+import { useHistory } from "react-router-dom";
 import SideNavBar from '../../components/global/SideNavBar'
 
 let RecipeFeed = ({ apiClient, logOutFunc }) => {
   const [recipes, setRecipes] = useState([]);
+  const [modalState, setModalState] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState({
+    title: "",
+    prep_time: "",
+    cook_time: "",
+    serves: "",
+    ingredients: [{ measurement: "", unit: "", ingredient: "" }],
+    steps: [{ step: "", instruction: "" }],
+  });
+  let history = useHistory();
 
   const refreshPosts = useCallback(async () => {
     const recipesFromServer = await apiClient.getAllRecipes();
@@ -17,13 +28,21 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
     refreshPosts();
   }, [refreshPosts]);
 
+  const redirectToAddRecipe = () => {
+    history.push("/user/create-recipe");
+  };
+
   const buildFeed = () => {
-    return recipes ? (
+    return recipes.length ? (
       recipes.map((recipe) => {
         return (
           <Row key={recipe._id}>
             <Col>
-              <RecipeCard recipe={recipe} />
+              <RecipeCard
+                recipe={recipe}
+                setModalState={setModalState}
+                setSelectedRecipe={setSelectedRecipe}
+              />
             </Col>
           </Row>
         );
@@ -31,7 +50,7 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
     ) : (
       <Row>
         <Col className="text-left">
-          <p>No recipes added</p>
+          <p>No recipes available</p>
         </Col>
       </Row>
     );
@@ -42,18 +61,24 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
       <SideNavBar logOut={logOutFunc} />
       <Container className="pt-5 feed-container">
         <Row className="d-flex justify-content-center">
-          <Col xs={12} lg={10} className="text-left">
+          <Col xs={12} sm={6} className="text-left">
             <h1>Recipes</h1>
           </Col>
-          <Col className="text-right">
-            <RecipeButton btnText="Add Recipe" btnLink="/user/create-recipe" />
+          <Col xs={12} sm={6} className="text-right">
+            <Button className="button-main" onClick={redirectToAddRecipe}>
+              Add Recipe
+            </Button>
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col lg={10}>
-            <Container>{buildFeed()}</Container>
-          </Col>
+          <Col lg={12}>{buildFeed()}</Col>
         </Row>
+        <RecipeModal
+          show={modalState}
+          setModalState={setModalState}
+          recipe={selectedRecipe}
+          setSelectedRecipe={setSelectedRecipe}
+        />
       </Container>
     </>
   );
