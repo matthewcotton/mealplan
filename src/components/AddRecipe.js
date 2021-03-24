@@ -53,12 +53,21 @@ class AddRecipe extends React.Component {
     let measurementInput = document.getElementById('measurement').value;
     let unitInput = document.getElementById('unit').value;
     let ingredientInput = document.getElementById('ingredient').value;
+    if (
+      measurementInput === "" ||
+     unitInput === "" ||
+      ingredientInput===""
+    )
+     {return }
     //Add new ingredients to array
     this.setState((prevState) => ({
       //concat the new ingredients onto the array list
       ingredient: [...prevState.ingredient,
       { measurement: measurementInput, unit: unitInput, ingredient: ingredientInput }],
     }));
+    document.getElementById('measurement').value = ""
+    document.getElementById('unit').value = ""
+    document.getElementById('ingredient').value = ""
   }
 
 
@@ -68,12 +77,19 @@ class AddRecipe extends React.Component {
     //Get step from
     let stepInput = document.getElementById('step').value;
     let instructionInput = document.getElementById('instruction').value;
+    if (
+      stepInput === "" ||
+      instructionInput === ""
+    )
+    {return}
     //Add new ingredients to array
     this.setState((prevState) => ({
       //concat the new ingredients onto the array list
       step: [...prevState.step,
       { step: stepInput, instruction: instructionInput }],
     }));
+    document.getElementById('step').value = ""
+    document.getElementById('instruction').value = ""
   }
 
 
