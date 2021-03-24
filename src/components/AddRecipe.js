@@ -91,7 +91,7 @@ class AddRecipe extends React.Component {
             {ingredient.unit}
           </td>
           <td>
-            {ingredient.ingredients}
+            {ingredient.ingredient}
           </td>
         </tr>
       );
