@@ -1,0 +1,91 @@
+.side-nav-bar {
+    height: 100vh;
+    width: 200px;
+    padding: 40px 20px;
+    background-color: $darkGrey;
+    position: fixed;
+    top: 0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    z-index: 3;
+    color: #fff;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+
+    #nav-logo{
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        @include tablet {
+            width: 200px;
+        }
+    }
+    nav {
+        margin-bottom: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        p {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-size: 1.1rem;
+            &:hover {
+                font-weight: 700;
+            }
+        }
+    }
+    button {
+        width: 100%;
+    }
+    @include tablet {
+        width: 300px;
+    }
+}
+.nav-menu {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.nav-user-tag {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    img {
+        height: 2rem;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+        margin-left: 10px;
+    }
+}
+#nav-close {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    fill: #fff;
+}
+#side-nav-toggle {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: $darkGrey;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    svg {
+        height: 25px;
+        display: block;
+    }
+}
