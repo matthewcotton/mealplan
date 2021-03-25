@@ -9,7 +9,7 @@ let CreateMealPlan = (props) => {
         <>
             <SideNavBar logOut={props.logOutFunc} />
             <Container>
-                <MealPlanForm />
+                <MealPlanForm apiClient={ props.apiClient}/>
             </Container>
         </>
     )

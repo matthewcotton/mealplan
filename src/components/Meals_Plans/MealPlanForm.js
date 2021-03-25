@@ -1,19 +1,44 @@
-let MealPlanForm = () => {
+import React, { useState } from 'react'
 
+let MealPlanForm = ({ apiClient }) => {
+
+    const [mealPlan, setMealPlan] = useState({
+        title: "",
+        duration: undefined,
+        start_date: ""
+    })
     // duration should be a number
+    let handleFormSubmit = (e) => {
+        e.preventDefault()
+        apiClient.createMealPlan(mealPlan)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+    }
+
+    let handleFormChange = (e) => {
+        setMealPlan({
+            title: e.currentTarget.title.value,
+            duration: parseInt(e.currentTarget.duration.value),
+            start_date: e.currentTarget.start_date.value
+        })
+    }
 
     return (
         <section className="meal-plan-form">
             <div className="meal-plan-form-title">
                 <h1>Create a Meal Plan</h1>
             </div>
-            <section className="meal-plan-form-main">
+            <form className="meal-plan-form-main" onChange={(e) => handleFormChange(e)} onSubmit={(e) => handleFormSubmit(e)}>
                 <article>
                     <div className="meal-plan-form-number">
                         <h1>1</h1>
                     </div>
                     <div>
-                        <input type="text" name="title" id="title" placeholder="Meal Plan Title" autoFocus/>
+                        <input required type="text" name="title" id="title" placeholder="Meal Plan Title" autoFocus />
                     </div>
                 </article>
                 <article>
@@ -22,16 +47,16 @@ let MealPlanForm = () => {
                     </div>
                     <div>
                         <h4>How long would you like your meal plan to last?</h4>
-                        <form className="meal-plan-form-duration-picker">
+                        <div className="meal-plan-form-duration-picker mt-3">
                             <div className="mr-5">
-                                <label for="1 week">1 Week</label>
-                                <input type="radio" name="duration" value="7" />
+                                <label htmlFor="7">1 Week</label>
+                                <input type="radio" auto="true" name="duration" value="7" />
                             </div>
                             <div>
-                                <label for="2 week">2 Weeks</label>
+                                <label htmlFor="14">2 Weeks</label>
                                 <input type="radio" name="duration" value="14" />
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </article>
                 <article>
@@ -40,12 +65,11 @@ let MealPlanForm = () => {
                     </div>
                     <div>
                         <h4>When would you like your meal plan to start?</h4>
-                        <form>
-                            <input type="date" name="start_date" />
-                        </form>
+                        <input required type="date" name="start_date" className="mt-3" />
                     </div>
                 </article>
-            </section>
+                <button type="submit" className="button-main">Create Meal Plan</button>
+            </form>
         </section>
     )
 }
