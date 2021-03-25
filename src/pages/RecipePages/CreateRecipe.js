@@ -9,7 +9,7 @@ let CreateRecipe = (props) => {
         <>
             <AddRecipe />
             <SideNavBar logOut={props.logOutFunc}/>
-            <h1>Create Recipe (Recipe Form)</h1>
+            {/* <h1>Create Recipe (Recipe Form)</h1> */}
         </>
     )
 }
