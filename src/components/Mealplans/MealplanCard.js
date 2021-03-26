@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import DefaultImg from "../../assets/images/spencer-davis-_yWhM5TZgdo-unsplash.jpg";
 import { useHistory } from "react-router-dom";
+import { DateTime } from "luxon";
 
 export const MealplanCard = ({ mealplan }) => {
   let history = useHistory();
@@ -9,6 +10,9 @@ export const MealplanCard = ({ mealplan }) => {
   const redirectToUpdateMealplan = () => {
     history.push(`/user/update-mealplan/${mealplan._id}`);
   };
+
+  const startDate = DateTime.fromISO(mealplan.start_date);
+  const endDate = DateTime.fromISO(mealplan.end_date);
 
   const buildRecipeList = (recipes) => {
     return recipes.length ? (
@@ -33,8 +37,8 @@ export const MealplanCard = ({ mealplan }) => {
       <Card.Body className="mealplan-body">
         <Card.Title>{mealplan.title}</Card.Title>
         <Card.Text>
-          Duration: {mealplan.duration} | Start Date: {mealplan.start_date} | End Date:{" "}
-          {mealplan.end_date}
+          Duration: {mealplan.duration} | Start Date: {startDate.toLocaleString()} | End Date:{" "}
+          {endDate.toLocaleString()}
         </Card.Text>
         {buildRecipeList(mealplan.recipes)}
         <span className="mealplan-btn-view">
