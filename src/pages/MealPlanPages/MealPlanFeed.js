@@ -8,15 +8,12 @@ import SideNavBar from "../../components/global/SideNavBar";
 
 let MealPlanFeed = ({ apiClient, logOutFunc }) => {
   const [mealplans, setMealplans] = useState([]);
-  //   const [recipes, setRecipes] = useState([]);
 
   let history = useHistory();
 
   const refreshPosts = useCallback(async () => {
     const mealplansFromServer = await apiClient.getAllMealplans();
     const recipesFromServer = await apiClient.getAllRecipes();
-    // setRecipes(recipesFromServer);
-    // Assemble recipe data into mealplans
     const mealplansWithRecipeData = mealplansFromServer.map((mealplan) => {
       const mealplanWithRecipeData = mealplan.recipes.map((mealplanRecipe) => {
         const recipeData = recipesFromServer.find(
@@ -27,10 +24,6 @@ let MealPlanFeed = ({ apiClient, logOutFunc }) => {
       // return mealplans
       return { ...mealplan, recipes: mealplanWithRecipeData };
     });
-
-    // console.log(mealplansFromServer);
-    // console.log(recipesFromServer);
-    console.log(mealplansWithRecipeData);
     setMealplans(mealplansWithRecipeData);
   }, [apiClient]);
 
