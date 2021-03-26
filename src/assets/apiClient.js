@@ -53,4 +53,13 @@ export default class apiClient {
     const res = await this.authenticatedCall("get", `${url}recipe`);
     return res.data;
   }
+
+  addRecipe(
+    title, prep_time, cook_time, serves, ingredient, step) {
+    return this.autheticatedCall(
+      'post', url, { title,  prep_time, cook_time, serves, ingredient, step 
+      })
 }
+}
+
+
