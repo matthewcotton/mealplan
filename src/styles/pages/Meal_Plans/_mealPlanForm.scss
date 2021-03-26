@@ -10,9 +10,6 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     overflow: hidden;
-    article {
-        margin-bottom: 50px;
-    }
     input[type=text] {
         width: 100%;
         padding: 10px;
@@ -52,7 +49,6 @@
         width: 60px;
         height: 60px;
         margin: 0 auto;
-        margin-bottom: 15px;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -74,5 +70,33 @@
             flex-direction: column;
             align-items: center;
         }
+    }
+}
+.meal-plan-success-bg {
+    width: 100%;
+    padding: 15px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+}
+.meal-plan-success-modal {
+    padding: 30px;
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: #fff;
+    .close-icon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
     }
 }
