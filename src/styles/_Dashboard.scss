@@ -1,18 +1,19 @@
-// .card {
-//     position: relative;
-//     top: 30px;
-//     margin-top: 20px;
+.dashboard {
+  &-card {
+    position: relative;
+    top: 30px;
+    margin-top: 20px;
 
+    &-img {
+      height: 20rem;
+    }
 
-// .card-img {
-//     height: 20rem;
-// }
+    &-link {
+      font-weight: bold;
+    }
 
-// .card-link {
-//     font-weight: bold;
-// }
-
-// .card-body {
-//     background-color: darkseagreen;
-// }
-// }
+    &-body {
+      background-color: darkseagreen;
+    }
+  }
+}
