@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
       <div>
         <Container>
           <Row>
-            <Col>
+            <Col className="text-center">
               <Card className="dashboard-card">
                 <Card.Img
                   variant="top"
@@ -16,15 +16,13 @@ class Dashboard extends React.Component {
                   src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
-                  <Card.Link className="dashboard-card-link">
-                    <Link className="link" to="/user/create-recipe">
-                      Add Recipe
-                    </Link>
-                  </Card.Link>
+                  <Link className="dashboard-card-link" to="/user/create-recipe">
+                    Add Recipe
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
-            <Col>
+            <Col className="text-center">
               <Card className="dashboard-card">
                 <Card.Img
                   variant="top"
@@ -32,17 +30,15 @@ class Dashboard extends React.Component {
                   src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
-                  <Card.Link className="dashboard-card-link">
-                    <Link className="link" to="user/recipes">
-                      View Recipes
-                    </Link>
-                  </Card.Link>
+                  <Link className="dashboard-card-link" to="user/recipes">
+                    View Recipes
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="text-center">
               <Card className="dashboard-card">
                 <Card.Img
                   variant="top"
@@ -50,15 +46,13 @@ class Dashboard extends React.Component {
                   src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
-                  <Card.Link className="dashboard-card-link">
-                    <Link className="link" to="/user/create-meal-plan">
-                      Create Meal Plan
-                    </Link>
-                  </Card.Link>
+                  <Link className="dashboard-card-link" to="/user/create-meal-plan">
+                    Create Meal Plan
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
-            <Col>
+            <Col className="text-center">
               <Card className="dashboard-card">
                 <Card.Img
                   variant="top"
@@ -66,11 +60,9 @@ class Dashboard extends React.Component {
                   src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
-                  <Card.Link className="dashboard-card-link">
-                    <Link className="link" to="user/meal-plans">
-                      View Meal Plans
-                    </Link>
-                  </Card.Link>
+                  <Link className="dashboard-card-link" to="user/meal-plans">
+                    View Meal Plans
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>
