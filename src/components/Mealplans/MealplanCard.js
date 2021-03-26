@@ -7,7 +7,7 @@ export const MealplanCard = ({ mealplan }) => {
   let history = useHistory();
 
   const redirectToUpdateMealplan = () => {
-    history.push(`/user/mealplan-recipe/${mealplan._id}`);
+    history.push(`/user/update-mealplan/${mealplan._id}`);
   };
 
   const buildRecipeList = (recipes) => {
@@ -37,12 +37,12 @@ export const MealplanCard = ({ mealplan }) => {
           {mealplan.end_date}
         </Card.Text>
         {buildRecipeList(mealplan.recipes)}
-        <span className="recipe-btn-view">
+        <span className="mealplan-btn-view">
           <Button className="button-main" value={""} onClick={(e) => {}}>
             View
           </Button>
         </span>
-        <span className="recipe-btn-manage">
+        <span className="mealplan-btn-manage">
           <Button className="button-main" onClick={redirectToUpdateMealplan}>
             Manage
           </Button>
