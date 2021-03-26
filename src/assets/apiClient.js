@@ -57,7 +57,7 @@ export default class apiClient {
   async addRecipe(
     title, prep_time, cook_time, serves, ingredients, steps) {
     return this.autheticatedCall(
-      "post", `${url}/add`, { title,  prep_time, cook_time, serves, ingredients, steps 
+      "post", `${url}recipe/add`, { title,  prep_time, cook_time, serves, ingredients, steps 
       })
 }
 }
