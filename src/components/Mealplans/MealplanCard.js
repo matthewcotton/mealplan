@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import DefaultImg from "../../assets/images/edgar-castrejon-1SPu0KT-Ejg-unsplash.jpg";
+import DefaultImg from "../../assets/images/spencer-davis-_yWhM5TZgdo-unsplash.jpg";
 import { useHistory } from "react-router-dom";
 
 export const MealplanCard = ({ mealplan }) => {
