@@ -1,0 +1,36 @@
+.mealplan {
+  &-card {
+    flex-direction: row;
+    margin: 1rem;
+  }
+  &-img {
+    width: 20%;
+    height: auto;
+  }
+  &-body {
+    background-color: white;
+  }
+  &-btn {
+    &-view {
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .mealplan {
+    height: min-content;
+
+    &-card {
+      flex-direction: column;
+    }
+    &-img {
+      width: 100%;
+    }
+    &-btn {
+      &-view {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

@@ -53,4 +53,9 @@ export default class apiClient {
     const res = await this.authenticatedCall("get", `${url}recipe`);
     return res.data;
   }
+
+  async getAllMealplans() {
+    const res = await this.authenticatedCall("get", `${url}mealplan`);
+    return res.data;
+  }
 }
