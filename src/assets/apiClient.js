@@ -55,3 +55,8 @@ export default class apiClient {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }
 }
+  async getAllMealplans() {
+    const res = await this.authenticatedCall("get", `${url}mealplan`);
+    return res.data;
+  }
+}
