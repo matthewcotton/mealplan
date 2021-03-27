@@ -37,7 +37,7 @@ export const MealplanCard = ({ mealplan }) => {
       <Card.Body className="mealplan-body">
         <Card.Title>{mealplan.title}</Card.Title>
         <Card.Text>
-          Duration: {mealplan.duration} | Start Date: {startDate.toLocaleString()} | End Date:{" "}
+          Duration: {mealplan.duration} {mealplan.duration < 1 ? "Day" : "Days"} | Start Date: {startDate.toLocaleString()} | End Date:{" "}
           {endDate.toLocaleString()}
         </Card.Text>
         {buildRecipeList(mealplan.recipes)}
