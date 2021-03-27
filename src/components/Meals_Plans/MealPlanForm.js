@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MealPlanSuccessModal from './MealPlanSuccessModal'
 import Loader from '../../assets/images/loading-gif.gif'
 
 let MealPlanForm = ({ apiClient, openModal }) => {
