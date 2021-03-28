@@ -72,7 +72,7 @@ function App() {
               <MealPlanFeed apiClient={apiClient} logOutFunc={logOutFunc} />
             </ProtectedRoute>
             <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn}>
-              <SingleMealPlan logOutFunc={logOutFunc} />
+              <SingleMealPlan apiClient={apiClient} logOutFunc={logOutFunc} />
             </ProtectedRoute>
           </Switch>
         </Router>
