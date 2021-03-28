@@ -54,6 +54,7 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
         setButtonDisabled({ login: true })
         apiClient.logIn(username, password)
             .then(response => {
+                setButtonDisabled({ login: false })
                 const newUser = { username: response.data.username }
                 logInFunc(newUser, response.data.token)
             })
@@ -64,7 +65,6 @@ let EntryTabs = ({ apiClient, logInFunc }) => {
                     setFormError({logIn: "Unable to log in at this moment. Please try again later."})
                 }
             })
-            .finally(() => setButtonDisabled({ login: false }))
     }
 
     return (

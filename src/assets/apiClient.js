@@ -46,9 +46,7 @@ export default class apiClient {
       }
     });
   }
-
   /* Secure API calls */
-
   async getAllRecipes() {
     const res = await this.authenticatedCall("get", `${url}recipe`);
     return res.data;
@@ -56,5 +54,13 @@ export default class apiClient {
 
   createRecipe(formdata) {
     return this.authenticatedCall("post", `${url}recipe/add`, formdata)
+  }
+}
+  createMealPlan(data) {
+    return this.authenticatedCall("post", `${url}mealplan/add`, data)
+  }
+  async getAllMealplans() {
+    const res = await this.authenticatedCall("get", `${url}mealplan`);
+    return res.data;
   }
 }
