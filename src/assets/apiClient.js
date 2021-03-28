@@ -55,7 +55,7 @@ export default class apiClient {
   createRecipe(formdata) {
     return this.authenticatedCall("post", `${url}recipe/add`, formdata)
   }
-}
+
   createMealPlan(data) {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }
