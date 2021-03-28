@@ -54,12 +54,7 @@ export default class apiClient {
     return res.data;
   }
 
-  async addRecipe(
-    title, prep_time, cook_time, serves, ingredients, steps) {
-    return this.autheticatedCall(
-      "post", `${url}recipe/add`, { title,  prep_time, cook_time, serves, ingredients, steps 
-      })
+  createRecipe(formdata) {
+    return this.authenticatedCall("post", `${url}recipe/add`, formdata)
+  }
 }
-}
-
-
