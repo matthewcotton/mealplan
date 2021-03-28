@@ -1,11 +1,17 @@
-// SingleMealPlan is found at /user/meal-plans/:id
-// this page will show all the recipes in a meal plan by day with links to each individual recipe page
 import SideNavBar from '../../components/global/SideNavBar'
+import {useParams} from 'react-router-dom'
+import {Container} from 'react-bootstrap'
+
 let SingleMealPlan = (props) => {
+    let {id} = useParams()
+    console.log(id)
+
     return (
         <>
             <SideNavBar logOut={props.logOutFunc} />
-            <h1>Single Meal Plan</h1>
+            <Container>
+                <h1>Single Meal Plan</h1>
+            </Container>
         </>
     )
 }

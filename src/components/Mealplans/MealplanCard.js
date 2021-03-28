@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import DefaultImg from "../../assets/images/spencer-davis-_yWhM5TZgdo-unsplash.jpg";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { DateTime } from "luxon";
 
 export const MealplanCard = ({ mealplan }) => {
@@ -42,14 +42,16 @@ export const MealplanCard = ({ mealplan }) => {
         </Card.Text>
         {buildRecipeList(mealplan.recipes)}
         <span className="mealplan-btn-view">
-          <Button className="button-main" value={""} onClick={(e) => {}}>
+          <Link to={`/user/meal-plans/${mealplan._id}`}>
+          <button className="button-main" value={""} onClick={(e) => {}}>
             View
-          </Button>
+          </button>
+          </Link>
         </span>
         <span className="mealplan-btn-manage">
-          <Button className="button-main" onClick={redirectToUpdateMealplan}>
+          <button className="button-main" onClick={redirectToUpdateMealplan}>
             Manage
-          </Button>
+          </button>
         </span>
       </Card.Body>
     </Card>
