@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 import "toastr/build/toastr.min.css";
 import React, { useState, useEffect } from "react";
-import { useLoggedInUser, loggedInUser } from "./assets/loggedInUser.context";
+import { loggedInUser } from "./assets/loggedInUser.context";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Entry, Dashboard, Account } from "./pages";
 import { CreateRecipe, RecipeFeed, SingleRecipe } from "./pages/RecipePages";

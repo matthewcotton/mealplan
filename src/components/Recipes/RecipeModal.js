@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import Cross from "../../assets/icons/times-solid.svg";
 
 export const RecipeModal = ({ recipe, show, setModalState }) => {
@@ -9,14 +8,14 @@ export const RecipeModal = ({ recipe, show, setModalState }) => {
   };
 
   const buildIngredients = () => {
-    return recipe.ingredients.map((ingredient) => {
-      return <li>{`${ingredient.measurement}${ingredient.unit} ${ingredient.ingredient}`}</li>;
+    return recipe.ingredients.map((ingredient, index) => {
+      return <li key={index}>{`${ingredient.measurement}${ingredient.unit} ${ingredient.ingredient}`}</li>;
     });
   };
 
   const buildSteps = () => {
-    return recipe.steps.map((step) => {
-      return <li>{`${step.step}. ${step.instruction}`}</li>;
+    return recipe.steps.map((step, index) => {
+      return <li key={index}>{`${step.step}. ${step.instruction}`}</li>;
     });
   };
 
@@ -34,9 +33,9 @@ export const RecipeModal = ({ recipe, show, setModalState }) => {
       id="recipe-modal-background"
     >
       <section style={show ? { display: "block" } : { display: "none" }} className="recipe-modal">
-        <span classname="recipe-cross">
+        <span className="recipe-cross">
           <img
-            classname="recipe-cross-img"
+            className="recipe-cross-img"
             onClick={(e) => closeRecipeModal(e)}
             alt="close"
             src={Cross}

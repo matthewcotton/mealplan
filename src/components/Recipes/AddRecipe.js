@@ -237,8 +237,9 @@ class AddRecipe extends React.Component {
                 </select>
               </Col>
             </Row>
-            <h2 className="header2">Add Ingredients</h2>
             <br />
+            <h2 className="header2">Add Ingredients</h2>
+            
             <Row>
               <FaPlus className="button-plus" onClick={(e) => {
                 this.addIngredients(e)
@@ -311,7 +312,7 @@ class AddRecipe extends React.Component {
                 </Table>
               </Col>
             </Row>
-​
+​             
             <h2 className="header2">Add Steps</h2>
             <Row>
               <FaPlus className="button-plus" onClick={(e) => {
