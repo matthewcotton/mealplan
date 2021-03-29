@@ -5,7 +5,8 @@ let SingleMealPlanContent = ({ recipes, apiClient }) => {
 
     let buildMealPlanFeed = () => {
         recipes.map(recipe => {
-            // make api call to get single recipe for each recipe
+            const {day} = recipe
+            // make api call to get single recipe data for each recipe
             // make recipe card feed with response data
         })
     }
