@@ -46,7 +46,7 @@ class AddRecipe extends React.Component {
       console.log(res)
       this.setState({ disabled: false })
    
-      window.location.reload()
+     this.props.changePage()
     
     })
       .catch(() => {
