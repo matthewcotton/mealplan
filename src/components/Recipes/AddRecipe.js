@@ -238,6 +238,7 @@ class AddRecipe extends React.Component {
               </Col>
             </Row>
             <br />
+            <br />
             <h2 className="header2">Add Ingredients</h2>
             
             <Row>
@@ -364,9 +365,10 @@ class AddRecipe extends React.Component {
                 </Table>
               </Col>
             </Row>
-            <Button type="button" className="button-submit" onClick={this.submitHandler}>Create Recipe</Button>
+            <Button type="button" className="button-main" onClick={this.submitHandler}>Create Recipe</Button>
           </form>
         </div>
+        <br />
       </Container>
     )
   }
