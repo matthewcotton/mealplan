@@ -13,7 +13,7 @@ let SingleMealPlanContent = ({ recipes, apiClient }) => {
     
     return (
         <>
-            {buildMealPlanFeed()}
+            {/* {buildMealPlanFeed()} */}
         </>
     )
 }

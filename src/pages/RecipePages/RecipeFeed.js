@@ -1,7 +1,7 @@
 // RecipeFeed can be found at /user/recipes
 // this page will show a list of recipes that have been created
 import { useState, useEffect, useCallback } from "react";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Row} from "react-bootstrap";
 import { RecipeCard, RecipeModal } from "../../components";
 import { useHistory } from "react-router-dom";
 import SideNavBar from '../../components/global/SideNavBar'
@@ -65,9 +65,9 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
             <h1>Recipes</h1>
           </Col>
           <Col xs={12} sm={6} className="text-right">
-            <Button className="button-main" onClick={redirectToAddRecipe}>
+            <button className="button-main button-orange" onClick={redirectToAddRecipe}>
               Add Recipe
-            </Button>
+            </button>
           </Col>
         </Row>
         <Row className="justify-content-center">

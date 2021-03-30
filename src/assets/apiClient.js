@@ -51,6 +51,9 @@ export default class apiClient {
     const res = await this.authenticatedCall("get", `${url}recipe`);
     return res.data;
   }
+  getSingleRecipe(id) {
+    return this.authenticatedCall("get", `${url}recipe/${id}`)
+  }
   createMealPlan(data) {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }

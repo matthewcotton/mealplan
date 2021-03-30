@@ -18,21 +18,21 @@ export const RecipeCard = ({ recipe, setModalState, setSelectedRecipe }) => {
   return (
     <Card className="mx-0 recipe-card">
       <Card.Img className="recipe-img" src={DefaultImg} />
-      <Card.Body className="recipe-body">
-        <Card.Title>{recipe.title}</Card.Title>
+      <Card.Body className="recipe-body my-auto">
+        <h2>{recipe.title}</h2>
         <Card.Text>
           Prep Time: {recipe.prep_time} | Cook Time: {recipe.cook_time} |{" "}
           {recipe.ingredients.length} Ingredients
         </Card.Text>
         <span className="recipe-btn-view">
-          <Button className="button-main" value={recipe} onClick={(e) => setRecipe(e)}>
+          <button className="button-main" value={recipe} onClick={(e) => setRecipe(e)}>
             View
-          </Button>
+          </button>
         </span>
         <span className="recipe-btn-manage">
-          <Button className="button-main" onClick={redirectToUpdateRecipe}>
+          <button className="button-main" onClick={redirectToUpdateRecipe}>
             Manage
-          </Button>
+          </button>
         </span>
       </Card.Body>
     </Card>
