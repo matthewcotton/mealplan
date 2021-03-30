@@ -365,7 +365,7 @@ class AddRecipe extends React.Component {
                 </Table>
               </Col>
             </Row>
-            <Button type="submit" className="button-main button-orange" onClick={this.submitHandler}>Create Recipe</Button>
+            <button type="submit" className="button-main button-orange" onClick={this.submitHandler}>Create Recipe</button>
           </form>
         </div>
         <br />
