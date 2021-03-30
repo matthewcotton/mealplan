@@ -21,14 +21,15 @@ let SingleMealPlan = ({ apiClient, logOutFunc }) => {
 
     // takes array of recipes
     let getRecipes = (recipes) => {
-        const recipesFromServer = []
-        recipes.map(recipe => {
+        const recipePromises = recipes.map(recipe => {
             return apiClient.getSingleRecipe(recipe.recipe[0])
-                .then(({ data }) => { recipesFromServer.push(data) }, console.error)
-                .finally(() => setRecipesToBuild(recipesFromServer))
+                .then(({ data }) => data, console.error)
+        })
+        Promise.all(recipePromises).then((data) => {
+            setRecipesToBuild(data)
         })
     }
-
+        
     let getMealPlanData = (id) => {
         apiClient.getSingleMealPlan(id)
         .then(({ data }) => {
@@ -40,6 +41,7 @@ let SingleMealPlan = ({ apiClient, logOutFunc }) => {
 
 
     const buildMealPlanFeed = () => {
+        console.log("recipes 2 build", recipesToBuild)
         return recipesToBuild.length ? (
             recipesToBuild.map((recipe, index) => {
                 return (
@@ -60,15 +62,23 @@ let SingleMealPlan = ({ apiClient, logOutFunc }) => {
         );
     };
 
-
-
     return (
         <>
             <SideNavBar logOut={logOutFunc} />
             <Container className="mt-5">
                 <h1>{mealPlanData.title}</h1>
                 <h5>{`${mealPlanData.duration} Days | From ${startDate.toLocaleString()} to ${endDate.toLocaleString()}`} </h5>
-                {buildMealPlanFeed()}
+                {/* {buildMealPlanFeed()} */}
+                {recipesToBuild.map((recipe, index) => {
+                return (
+                    <div key={recipe._id}>
+                            <h3 className="mt-5">Day {index + 1 }</h3>
+                            <RecipeCard
+                                recipe={recipe}
+                            />
+                    </div>
+                );
+        })}
             </Container>
         </>
     )
