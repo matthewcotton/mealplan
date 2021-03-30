@@ -7,7 +7,7 @@ import SideNavBar from '../../components/global/SideNavBar'
 let CreateRecipe = (props) => {
     return (
         <>
-            <AddRecipe />
+            <AddRecipe apiClient={props.apiClient} />
             <SideNavBar logOut={props.logOutFunc}/>
             {/* <h1>Create Recipe (Recipe Form)</h1> */}
         </>

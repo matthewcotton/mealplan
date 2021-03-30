@@ -53,8 +53,8 @@ function App() {
             <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/recipe" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn} component={CreateRecipe} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} component={SingleRecipe} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/create-recipe" apiClient={apiClient}isLoggedIn={isLoggedIn} component={CreateRecipe} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user/recipes/:id" apiClient={apiClient}isLoggedIn={isLoggedIn} component={SingleRecipe} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} logOutFunc={logOutFunc} apiClient={apiClient} />
             <ProtectedRoute exact path="/user/meal-plans" apiClient={apiClient} isLoggedIn={isLoggedIn} component={MealPlanFeed} logOutFunc={logOutFunc} />
             <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn} component={SingleMealPlan} logOutFunc={logOutFunc} />
