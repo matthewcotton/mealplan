@@ -1,7 +1,7 @@
 // RecipeFeed can be found at /user/recipes
 // this page will show a list of recipes that have been created
 import { useState, useEffect, useCallback } from "react";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Row} from "react-bootstrap";
 import { RecipeCard, RecipeModal } from "../../components";
 import { useHistory } from "react-router-dom";
 import SideNavBar from '../../components/global/SideNavBar'

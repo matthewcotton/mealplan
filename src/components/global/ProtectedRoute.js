@@ -1,10 +1,10 @@
 import { Route, Redirect } from 'react-router-dom'
 
-let ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => {
+let ProtectedRoute = ({ isLoggedIn, children, ...rest}) => {
 
     return (
-        <Route render={() => isLoggedIn ?
-            (<Component {...rest} />) : (<Redirect to={{ pathname: "/" }} />)
+        <Route {...rest} render={() => isLoggedIn ?
+            (children) : (<Redirect to={{ pathname: "/" }} />)
         } />
     )
 }

@@ -50,14 +50,30 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" render={() => <Entry apiClient={apiClient} isLoggedIn={isLoggedIn} logInFunc={logInFunc} />} />
-            <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} component={Dashboard} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn} component={Account} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/recipe" apiClient={apiClient} isLoggedIn={isLoggedIn} component={RecipeFeed} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/create-recipe" apiClient={apiClient}isLoggedIn={isLoggedIn} component={CreateRecipe} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/recipes/:id" apiClient={apiClient}isLoggedIn={isLoggedIn} component={SingleRecipe} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn} component={CreateMealPlan} logOutFunc={logOutFunc} apiClient={apiClient} />
-            <ProtectedRoute exact path="/user/meal-plans" apiClient={apiClient} isLoggedIn={isLoggedIn} component={MealPlanFeed} logOutFunc={logOutFunc} />
-            <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn} component={SingleMealPlan} logOutFunc={logOutFunc} />
+            <ProtectedRoute exact path="/user" isLoggedIn={isLoggedIn} >
+              <Dashboard logOutFunc={logOutFunc}/>
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/account" isLoggedIn={isLoggedIn}>
+              <Account logOutFunc={logOutFunc} />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/recipes" isLoggedIn={isLoggedIn}>
+              <RecipeFeed apiClient={apiClient} logOutFunc={logOutFunc} />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn}>
+              <CreateRecipe logOutFunc={logOutFunc} />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} >
+              <SingleRecipe logOutFunc={logOutFunc}/>
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/create-meal-plan" isLoggedIn={isLoggedIn}>
+              <CreateMealPlan logOutFunc={logOutFunc} apiClient={apiClient}/>
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/meal-plans" isLoggedIn={isLoggedIn}>
+              <MealPlanFeed apiClient={apiClient} logOutFunc={logOutFunc} />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/user/meal-plans/:id" isLoggedIn={isLoggedIn}>
+              <SingleMealPlan apiClient={apiClient} logOutFunc={logOutFunc} />
+            </ProtectedRoute>
           </Switch>
         </Router>
       </loggedInUser.Provider>

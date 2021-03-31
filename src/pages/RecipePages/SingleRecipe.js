@@ -1,6 +1,6 @@
-// SingleRecipe is found at /user/recipes/:id
-// this page will show a single recipe
-import SideNavBar from '../../components/global/SideNavBar'
+import React from 'react';
+import SideNavBar from '../../components/global/SideNavBar';
+
 let SingleRecipe = (props) => {
     return (
         <>

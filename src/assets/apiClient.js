@@ -51,11 +51,12 @@ export default class apiClient {
     const res = await this.authenticatedCall("get", `${url}recipe`);
     return res.data;
   }
-
+  getSingleRecipe(id) {
+    return this.authenticatedCall("get", `${url}recipe/${id}`)
+  }
   createRecipe(formdata) {
     return this.authenticatedCall("post", `${url}recipe/add`, formdata)
   }
-
   createMealPlan(data) {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }
@@ -63,4 +64,9 @@ export default class apiClient {
     const res = await this.authenticatedCall("get", `${url}mealplan`);
     return res.data;
   }
+  getSingleMealPlan(id) {
+    return this.authenticatedCall("get", `${url}mealplan/${id}`)
+  }
+}
+
 }
