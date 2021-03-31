@@ -65,9 +65,9 @@ let RecipeFeed = ({ apiClient, logOutFunc }) => {
             <h1>Recipes</h1>
           </Col>
           <Col xs={12} sm={6} className="text-right">
-            <Button className="button-main" onClick={redirectToAddRecipe}>
+            <button className="button-main button-orange" onClick={redirectToAddRecipe}>
               Add Recipe
-            </Button>
+            </button>
           </Col>
         </Row>
         <Row className="justify-content-center">

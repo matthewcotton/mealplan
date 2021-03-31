@@ -6,7 +6,7 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="mb-5">
           <Row>
             <Col className="text-center">
               <Card className="dashboard-card">
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
                 <Card.Img
                   variant="top"
                   className="dashboard-card-img"
-                  src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
+                  src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
                   <Link className="dashboard-card-link" to="user/recipe">
@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
                 <Card.Img
                   variant="top"
                   className="dashboard-card-img"
-                  src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
+                  src="https://images.unsplash.com/photo-1588453251771-cd919b362ed4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
                   <Link className="dashboard-card-link" to="/user/create-meal-plan">
@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
                 <Card.Img
                   variant="top"
                   className="dashboard-card-img"
-                  src="https://images.unsplash.com/photo-1526383426426-c1716158d22a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
+                  src="https://images.unsplash.com/photo-1533777324565-a040eb52facd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1021&q=80"
                 />
                 <Card.Body className="dashboard-card-body">
                   <Link className="dashboard-card-link" to="user/meal-plans">

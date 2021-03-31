@@ -16,8 +16,10 @@ button[disabled] {
     @extend %button-shared;
     background-color: $darkGrey;
     color: #fff;
-
-    
+}
+.buton-secondary {
+    background-color: $lightGrey;
+    color: $grey;
 }
 .entry-form-button {
     width: 100%;
