@@ -9,7 +9,7 @@ let CreateRecipe = (props) => {
     let history = useHistory()
 
 const changePage = () =>{
-    history.push("/user/create-recipe")}
+    history.push("/user/recipes")}
     
     
     return (
