@@ -16,7 +16,7 @@ export const MealplanCard = ({ mealplan }) => {
         {recipes.map((recipe) => {
           return (
             <li key={recipe._id}>
-              Day {recipe.day} - {recipe.title}
+              Day {recipe.day} - {recipe.recipe.title}
             </li>
           );
         })}{" "}
