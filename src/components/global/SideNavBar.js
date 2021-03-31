@@ -31,7 +31,7 @@ let SideNavBar = (props) => {
                         </div>
                         <section style={navStatus.recipes ? { display: "block" } : { display: "none" }} className="nav-menu">
                             <Link style={{ textDecoration: 'none' }} to="/user/create-recipe"><p>Create Recipe</p></Link>
-                            <Link style={{ textDecoration: 'none' }} to="/user/recipe"><p className="mt-2">View Recipes</p></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/user/recipes"><p className="mt-2">View Recipes</p></Link>
                         </section>
                     </article>
                     <article className="mb-4">

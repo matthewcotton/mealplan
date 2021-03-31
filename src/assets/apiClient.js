@@ -68,5 +68,3 @@ export default class apiClient {
     return this.authenticatedCall("get", `${url}mealplan/${id}`)
   }
 }
-
-}

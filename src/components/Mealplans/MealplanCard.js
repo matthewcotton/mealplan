@@ -1,15 +1,10 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import DefaultImg from "../../assets/images/spencer-davis-_yWhM5TZgdo-unsplash.jpg";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 
 export const MealplanCard = ({ mealplan }) => {
-  let history = useHistory();
-
-  const redirectToUpdateMealplan = () => {
-    history.push(`/user/update-mealplan/${mealplan._id}`);
-  };
 
   const startDate = DateTime.fromISO(mealplan.start_date);
   const endDate = DateTime.fromISO(mealplan.end_date);
@@ -43,15 +38,10 @@ export const MealplanCard = ({ mealplan }) => {
         {buildRecipeList(mealplan.recipes)}
         <span className="mealplan-btn-view">
           <Link to={`/user/meal-plans/${mealplan._id}`}>
-          <button className="button-main" value={""} onClick={(e) => {}}>
+          <button className="button-main">
             View
           </button>
           </Link>
-        </span>
-        <span className="mealplan-btn-manage">
-          <button className="button-main" value={""} onClick={(e) => {}}>
-            View
-          </button>
         </span>
       </Card.Body>
     </Card>

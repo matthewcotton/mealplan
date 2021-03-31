@@ -14,10 +14,8 @@ const changePage = () =>{
     
     return (
         <>
-               <AddRecipe apiClient={props.apiClient} changePage={changePage} />
-    
+            <AddRecipe apiClient={props.apiClient} changePage={changePage} />
             <SideNavBar logOut={props.logOutFunc}/>
-            {/* <h1>Create Recipe (Recipe Form)</h1> */}
         </>
     )
 }
