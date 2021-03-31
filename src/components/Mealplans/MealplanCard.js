@@ -34,22 +34,17 @@ export const MealplanCard = ({ mealplan }) => {
   return (
     <Card className="mx-0 mealplan-card">
       <Card.Img className="mealplan-img" src={DefaultImg} />
-      <Card.Body className="mealplan-body">
-        <Card.Title>{mealplan.title}</Card.Title>
+      <Card.Body className="mealplan-body my-auto">
+        <h2>{mealplan.title}</h2>
         <Card.Text>
           Duration: {mealplan.duration} {mealplan.duration === 1 ? "Day" : "Days"} | Start Date: {startDate.toLocaleString()} | End Date:{" "}
           {endDate.toLocaleString()}
         </Card.Text>
         {buildRecipeList(mealplan.recipes)}
         <span className="mealplan-btn-view">
-          <Button className="button-main" value={""} onClick={(e) => {}}>
+          <button className="button-main" value={""} onClick={(e) => {}}>
             View
-          </Button>
-        </span>
-        <span className="mealplan-btn-manage">
-          <Button className="button-main" onClick={redirectToUpdateMealplan}>
-            Manage
-          </Button>
+          </button>
         </span>
       </Card.Body>
     </Card>

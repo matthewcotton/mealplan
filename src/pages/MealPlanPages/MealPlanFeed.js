@@ -64,9 +64,9 @@ let MealPlanFeed = ({ apiClient, logOutFunc }) => {
             <h1>Meal Plans</h1>
           </Col>
           <Col xs={12} sm={6} className="text-right">
-            <Button className="button-main" onClick={redirectToAddMealplan}>
+            <button className="button-main button-orange" onClick={redirectToAddMealplan}>
               Add Mealplan
-            </Button>
+            </button>
           </Col>
         </Row>
         <Row className="justify-content-center">
