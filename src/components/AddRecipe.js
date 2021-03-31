@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Table } from 'react-bootstrap';
+import { Container, Row, Col, Table } from 'react-bootstrap';
 import { FaPlus } from 'react-icons/fa';
 
 
@@ -30,18 +30,15 @@ class AddRecipe extends React.Component {
     formdata['ingredients'] = this.state.ingredient;
     formdata['steps'] = this.state.step;
     //Turn array into json
-    let payload = (formdata);
     let result 
     if (this.props.currentAd) {
       formdata["_id"] = this.props.currentAd.id
       result = this.props.apiClient.updateAd(
         formdata)
-      console.log(payload)
     } else {
      result = this.props.apiClient.createRecipe(
        formdata)
     }
-    console.log(payload)
     result.then((res) => {
       console.log(res)
       this.setState({ disabled: false })
@@ -323,7 +320,7 @@ class AddRecipe extends React.Component {
             </Row>
             <Row>
               <Col>
-                <Table className="table">
+                <Table className="table" responsive>
                   <thead>
                     <tr>
                       <th>Measurement</th>
@@ -376,7 +373,7 @@ class AddRecipe extends React.Component {
             </Row>
             <Row>
               <Col>
-                <Table className="table">
+                <Table className="table" responsive>
                   <thead>
                     <tr>
                       <th>Step</th>

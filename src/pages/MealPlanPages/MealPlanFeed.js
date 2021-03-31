@@ -1,7 +1,7 @@
 // MealPlanFeed can be found at /user/meal-plans
 // this page will show a list of meal plans that have been created
 import { useState, useEffect, useCallback } from "react";
-import { Container, Col, Row, Button } from "react-bootstrap";
+import { Container, Col, Row} from "react-bootstrap";
 import { MealplanCard } from "../../components";
 import { useHistory } from "react-router-dom";
 import SideNavBar from "../../components/global/SideNavBar";

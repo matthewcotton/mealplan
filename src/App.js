@@ -60,7 +60,7 @@ function App() {
               <RecipeFeed apiClient={apiClient} logOutFunc={logOutFunc} />
             </ProtectedRoute>
             <ProtectedRoute exact path="/user/create-recipe" isLoggedIn={isLoggedIn}>
-              <CreateRecipe logOutFunc={logOutFunc} />
+              <CreateRecipe logOutFunc={logOutFunc} apiClient={apiClient}/>
             </ProtectedRoute>
             <ProtectedRoute exact path="/user/recipes/:id" isLoggedIn={isLoggedIn} >
               <SingleRecipe logOutFunc={logOutFunc}/>
