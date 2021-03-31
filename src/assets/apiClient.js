@@ -54,6 +54,9 @@ export default class apiClient {
   getSingleRecipe(id) {
     return this.authenticatedCall("get", `${url}recipe/${id}`)
   }
+  createRecipe(formdata) {
+    return this.authenticatedCall("post", `${url}recipe/add`, formdata)
+  }
   createMealPlan(data) {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }
@@ -64,4 +67,6 @@ export default class apiClient {
   getSingleMealPlan(id) {
     return this.authenticatedCall("get", `${url}mealplan/${id}`)
   }
+}
+
 }

@@ -24,9 +24,9 @@ let MealPlanForm = ({ apiClient, openModal }) => {
                 console.error(err.response)
             })
             .finally(() => {
-                e.currentTarget.title.value = "";
-                e.currentTarget.duration.value = "";
-                e.currentTarget.start_date.value = ""
+                e.target.title.value = "";
+                e.target.duration.value = "";
+                e.target.start_date.value = ""
             })
     }
 
@@ -62,7 +62,7 @@ let MealPlanForm = ({ apiClient, openModal }) => {
                             <div className="meal-plan-form-duration-picker mt-3">
                                 <div className="mr-5">
                                     <label htmlFor="7">1 Week</label>
-                                    <input checked={true} type="radio" auto="true" name="duration" value="7" />
+                                    <input defaultChecked type="radio" auto="true" name="duration" value="7" />
                                 </div>
                                 <div>
                                     <label htmlFor="14">2 Weeks</label>

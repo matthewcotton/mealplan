@@ -29,11 +29,6 @@ export const RecipeCard = ({ recipe, setModalState, setSelectedRecipe }) => {
             View
           </button>
         </span>
-        <span className="recipe-btn-manage">
-          <button className="button-main" onClick={redirectToUpdateRecipe}>
-            Manage
-          </button>
-        </span>
       </Card.Body>
     </Card>
   );
