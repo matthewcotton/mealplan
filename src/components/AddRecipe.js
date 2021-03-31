@@ -27,12 +27,34 @@ class AddRecipe extends React.Component {
     formdata['prep_time'] = this.state.form.prep_time;
     formdata['cook_time'] = this.state.form.cook_time;
     formdata['serves'] = this.state.form.serves;
-    formdata['ingredient'] = this.state.ingredient;
-    formdata['step'] = this.state.step;
+    formdata['ingredients'] = this.state.ingredient;
+    formdata['steps'] = this.state.step;
     //Turn array into json
-    let payload = JSON.stringify(formdata);
-    console.log(payload);
-  };
+    let payload = (formdata);
+    let result 
+    if (this.props.currentAd) {
+      formdata["_id"] = this.props.currentAd.id
+      result = this.props.apiClient.updateAd(
+        formdata)
+      console.log(payload)
+    } else {
+     result = this.props.apiClient.createRecipe(
+       formdata)
+    }
+    console.log(payload)
+    result.then((res) => {
+      console.log(res)
+      this.setState({ disabled: false })
+   
+     this.props.changePage()
+    
+    })
+      .catch(() => {
+        console.log("catch")
+        alert("an error occured, please try again");
+        this.setState({ disabled: false })
+      })
+  }
 
 
 
@@ -139,7 +161,7 @@ class AddRecipe extends React.Component {
       <Container>
         <div className="Form">
           <h1 className="header1">Create A Recipe</h1>
-          <form
+          <form id="addRecipe"
             className="needs-validation"
             onSubmit={this.submitHandler}
             noValidate
