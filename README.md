@@ -7,8 +7,8 @@ The application allows you to sign up with a username  and password, and log in 
 
 ### Project Team
 
-[Mike Thorpe](https://github.com/TTBoiMike)
-[Levi Udeh](https://github.com/levilu800b)
-[Matt Cotton](https://github.com/matthewcotton)
+- [Mike Thorpe](https://github.com/TTBoiMike)
+- [Levi Udeh](https://github.com/levilu800b)
+- [Matt Cotton](https://github.com/matthewcotton)
 
 ### [View this project live!](https://recipe-meal-planner.herokuapp.com/#/)
