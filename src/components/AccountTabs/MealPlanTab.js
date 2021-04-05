@@ -1,17 +1,20 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 
-const RecipeTab = ({ recipes, deleteRecipe }) => {
-  let buildRecipeRows = (recipes) => {
-    if (recipes.length !== 0) {
-      return recipes.map((recipe) => {
+const MealPlanTab = ({ mealplans }) => {
+  console.log(mealplans);
+
+  let buildMealplanRows = (mealplans) => {
+    if (mealplans.length !== 0) {
+      return mealplans.map((mealplan) => {
         return (
-          <tr key={recipe._id}>
-            <th>{recipe.title}</th>
+          <tr key={mealplan._id}>
+            <th>{mealplan.title}</th>
+            <th>{mealplan.start_date}</th>
             <th>
               <span className="account-manage-icons">
-                <Link to={`/user/recipes/${recipe._id}`}>
+                <Link to={`/user/meal-plans/${mealplan._id}`}>
                   <svg
                     aria-hidden="true"
                     focusable="false"
@@ -40,9 +43,7 @@ const RecipeTab = ({ recipes, deleteRecipe }) => {
                     viewBox="0 0 448 512"
                   >
                     <path
-                      onClick={(e) => deleteRecipe(e)}
                       fill="currentColor"
-                      id={recipe._id}
                       d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
                     ></path>
                   </svg>
@@ -55,24 +56,23 @@ const RecipeTab = ({ recipes, deleteRecipe }) => {
     } else {
       return (
         <tr className="mt-4">
-          <th>No Recipes to show</th>
+          <th>No Meal Plans to show</th>
         </tr>
       );
     }
   };
 
   return (
-    <>
-      <Table responsive bordered>
-        <thead>
-          <tr>
-            <th>Recipe</th>
-            <th>Manage</th>
-          </tr>
-        </thead>
-        <tbody>{buildRecipeRows(recipes)}</tbody>
-      </Table>
-    </>
+    <Table responsive bordered>
+      <thead>
+        <tr>
+          <th>Meal Plan</th>
+          <th>Start Date</th>
+          <th>Manage</th>
+        </tr>
+      </thead>
+      <tbody>{buildMealplanRows(mealplans)}</tbody>
+    </Table>
   );
 };
-export default RecipeTab;
+export default MealPlanTab;

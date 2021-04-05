@@ -45,7 +45,7 @@ let SideNavBar = (props) => {
                         </section>
                     </article>
                     <article>
-                        <Link style={{ textDecoration: 'none' }} to="/user/account"><p>Acccount</p></Link>
+                        <Link style={{ textDecoration: 'none' }} to="/user/account"><p>Account</p></Link>
                     </article>
                 </nav>
                 <button onClick={() => props.logOut()} className="button-main button-side-nav">Logout</button>

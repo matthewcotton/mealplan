@@ -3,3 +3,16 @@
     background-color: $lightGrey;
     overflow: hidden;
 }
+.account-manage-icons {
+    svg {
+        height: 1.3rem;
+    }
+    #read-icon {
+
+    }
+    .delete-icon {
+        &:hover {
+            fill: red;
+        }
+    }
+}
