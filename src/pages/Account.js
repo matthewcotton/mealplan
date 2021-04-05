@@ -1,16 +1,38 @@
-// the account page is found at /user/account
-// the account page will show username and password data
-// the account page will show activity data about the account
-// user can change their username/password
-import SideNavBar from '../components/global/SideNavBar'
-let Account = (props) => {
-    return (
-        <>
-            <SideNavBar logOut={props.logOutFunc} />
-            <h1>Account Page</h1>
+import React, { useState, useEffect } from "react";
+import SideNavBar from "../components/global/SideNavBar";
+import UserTab from "../components/AccountTabs/UserTab";
+import RecipeTab from "../components/AccountTabs/RecipeTab";
+import { Container, Tabs, Tab } from "react-bootstrap";
 
-        </>
-    )
-}
+let Account = ({ apiClient, logOutFunc }) => {
+  const [userRecipes, setUserRecipes] = useState([]);
+  const [userMealPlans, setUserMealPlans] = useState({});
 
-export default Account
+  useEffect(() => {
+    apiClient.getAllRecipes().then((response) => {
+      setUserRecipes(response);
+    });
+    apiClient.getAllMealplans().then((response) => {
+      setUserMealPlans(response);
+    });
+  }, []);
+
+  return (
+    <>
+      <SideNavBar logOut={logOutFunc} />
+      <Container>
+        <Tabs>
+          <Tab eventKey="user" title="User">
+            <UserTab recipes={userRecipes} mealplans={userMealPlans} />
+          </Tab>
+          <Tab eventKey="recipe" title="Recipe">
+            <RecipeTab recipes={userRecipes} />
+          </Tab>
+          <Tab eventKey="mealplans" title="Meal Plans"></Tab>
+        </Tabs>
+      </Container>
+    </>
+  );
+};
+
+export default Account;

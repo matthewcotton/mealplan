@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import DefaultImg from "../../assets/images/edgar-castrejon-1SPu0KT-Ejg-unsplash.jpg";
+import DefaultImg from "../../assets/images/recipe-thumbnail.jpg";
 
 export const RecipeCard = ({ recipe, setModalState, setSelectedRecipe }) => {
   const setRecipe = (e) => {

@@ -57,6 +57,9 @@ export default class apiClient {
   createRecipe(formdata) {
     return this.authenticatedCall("post", `${url}recipe/add`, formdata)
   }
+  deleteRecipe(id) {
+    return this.authenticatedCall("delete", `${url}recipe/${id}`);
+  }
   createMealPlan(data) {
     return this.authenticatedCall("post", `${url}mealplan/add`, data)
   }
