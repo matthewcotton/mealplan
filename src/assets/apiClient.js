@@ -70,4 +70,7 @@ export default class apiClient {
   getSingleMealPlan(id) {
     return this.authenticatedCall("get", `${url}mealplan/${id}`)
   }
+  deleteMealplan(id) {
+    return this.authenticatedCall("delete", `${url}mealplan/${id}`);
+  }
 }

@@ -20,9 +20,15 @@ let Account = ({ apiClient, logOutFunc }) => {
 
   let deleteRecipe = (e) => {
     const id = e.target.id;
-    apiClient.deleteRecipe(id).then((res) => {
-      console.log(res);
+    apiClient.deleteRecipe(id).then(() => {
       requestRecipes();
+    });
+  };
+
+  let deleteMealplan = (e) => {
+    const id = e.target.id;
+    apiClient.deleteMealplan(id).then(() => {
+      requestMealplans();
     });
   };
 
@@ -35,15 +41,16 @@ let Account = ({ apiClient, logOutFunc }) => {
     <>
       <SideNavBar logOut={logOutFunc} />
       <Container className="mt-5">
-        <Tabs>
-          <Tab eventKey="user" title="User">
-            <UserTab recipes={userRecipes} mealplans={userMealPlans} />
-          </Tab>
-          <Tab eventKey="recipe" title="Recipe">
+        <UserTab recipes={userRecipes} mealplans={userMealPlans} />
+        <Tabs className="mt-5">
+          <Tab eventKey="recipe" title="My Recipes">
             <RecipeTab recipes={userRecipes} deleteRecipe={deleteRecipe} />
           </Tab>
-          <Tab eventKey="mealplans" title="Meal Plans">
-            <MealPlanTab mealplans={userMealPlans} />
+          <Tab eventKey="mealplans" title="My Meal Plans">
+            <MealPlanTab
+              mealplans={userMealPlans}
+              deleteMealplan={deleteMealplan}
+            />
           </Tab>
         </Tabs>
       </Container>
